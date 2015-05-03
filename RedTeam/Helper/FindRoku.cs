@@ -13,9 +13,6 @@ namespace RedTeam.Helper
     {
         private static void CallRoku()
         {
-            Boolean done = false;
-            Boolean exception_thrown = false;
-
             // configure sending socket
             Socket sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             // set ssdp address and port
@@ -29,23 +26,34 @@ namespace RedTeam.Helper
             request.AppendLine("MAN: \"ssdp:discover\"");
             request.AppendLine("ST: roku:ecp");
             request.AppendLine("");
-            string textToSend = request;
+            string textToSend = request.ToString();
 
             // encode the request into bytes
-            byte[] send_buffer = Encoding.ASCII.GetBytes(request);
+            byte[] send_buffer = Encoding.ASCII.GetBytes(textToSend);
 
-
-
+            // send call
+            sending_socket.SendTo(send_buffer, receivingEndpoint);
         }
-        
-        
         
         
         public static IPAddress HearRoku()
         {
             CallRoku();
 
+            IPAddress rokuIP = null;
+            int listenPort = 60000;
 
+            UdpClient listener = new UdpClient(listenPort);
+            IPEndPoint listenerEP = new IPEndPoint(IPAddress.Any, listenPort);
+            string receivedData;
+            byte[] receiveByteArray;
+
+            receiveByteArray = listener.Receive(ref listenerEP);
+            receivedData = Encoding.ASCII.GetString(receiveByteArray, 0, receiveByteArray.Length);
+
+
+            //Need to add code to parse the receivedData to get the roku IPaddress. But untill I know the format I can't do it just yet.
+            return rokuIP;
         }
     }
 }
