@@ -9,7 +9,7 @@ namespace RedTeam.Models
 {
     public class Roku
     {
-        public IPAddress Location { get { return FindRoku.HearRoku(); } }
+        public IPAddress Location { get; set; }
 
 
     }
