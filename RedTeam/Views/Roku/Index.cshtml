@@ -1,6 +1,6 @@
 ﻿@model RedTeam.Models.Roku
 @using RedTeam.Helper
-  
+
 
 @{
     ViewBag.Title = "Roku";
@@ -8,7 +8,50 @@
 
 <h2>Roku</h2>
 
-<div>
-    
+<div class="row">
+    <div class="col-md-2">
+        @* Remote Control Buttons*@
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/home" method="post">
+                <input type="submit" value="Home">
+            </form>
+        </div>
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/up" method="post">
+                <input type="submit" value="Up">
+            </form>
+        </div> 
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/down" method="post">
+                <input type="submit" value="Down">
+            </form>
+        </div> 
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/left" method="post">
+                <input type="submit" value="Left">
+            </form>
+        </div> 
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/right" method="post">
+                <input type="submit" value="right">
+            </form>
+        </div>
+        <div>
+            <form action="http://192.168.0.105:8060/keypress/select" method="post">
+                <input type="submit" value="OK">
+            </form>
+        </div> 
+
+
+
+    </div>
+    @*End Remote Control Buttons*@
+
+    <div class="col-md-2">
+        @* This will be the sidebar with quicklinks *@
+
+
+    </div>
+    @* End quicklinks *@
 </div>
 
