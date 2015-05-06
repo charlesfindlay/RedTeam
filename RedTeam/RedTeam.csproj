@@ -170,6 +170,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Roku\Index.cshtml" />
+    <Content Include="Views\CarDashboard\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
