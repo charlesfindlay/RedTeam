@@ -127,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\FindRoku.cs" />
+    <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\Roku.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿@model RedTeam.Models.Roku
 @using RedTeam.Helper
-  
+@using RedTeam.Controllers
+
 
 @{
     ViewBag.Title = "Roku";
@@ -8,7 +9,24 @@
 
 <h2>Roku</h2>
 
-<div>
-    <button data-bind="click: myKeypress.bind('home')">Home</button>
-</div>
 
+<div class="row">
+    <div class="col-md-6">
+        <div>
+            <button data-bind="click: myKeypress()">Home</button>
+        </div>
+        <div>
+            <button data-bind="click: myKeypress()">Down</button>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        @*<div>
+            @foreach (var item in myFavorites)
+            {
+                string uri = "http://10.251.1.162:8060/query/icon/" + item;
+            }
+        </div>*@
+
+    </div>
+</div>

@@ -11,6 +11,5 @@ namespace RedTeam.Models
     {
         public IPAddress Location { get; set; }
 
-
     }
 }

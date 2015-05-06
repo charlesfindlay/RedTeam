@@ -22,3 +22,10 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.list-image {
+    background-image: url('uri');
+    text-indent: -99999px;
+    overflow: hidden;
+}
+
