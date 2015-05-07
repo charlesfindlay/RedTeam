@@ -13,10 +13,12 @@
 <div class="row">
     <div class="col-md-6">
         <div>
-            <button data-bind="click: myKeypress()">Home</button>
+            <form action="http://10.251.1.162:8060/keypress/home" method="post">
+                <input type="submit" value="Form Home">
+            </form>
         </div>
         <div>
-            <button data-bind="click: myKeypress()">Down</button>
+            <button id="goHome">JS Home</button>
         </div>
     </div>
 
