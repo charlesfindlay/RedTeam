@@ -21,11 +21,11 @@ namespace RedTeam
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js","~/Scripts/bootstrap-switch.js"));
+                      "~/Scripts/respond.js", "~/Scripts/bootstrap-switch.js", "~/Scripts/highlight.js", "~/Scripts/main.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css", "~/Content/bootstrap-switch/bootstrap2/bootstrap.css", "~/Content/bootstrap-switch/bootstrap3/bootstrap.css"));
+                      "~/Content/site.css", "~/Content/bootstrap-switch/bootstrap2/bootstrap-switch.css", "~/Content/bootstrap-switch/bootstrap3/bootstrap-switch.css", "~/Content/highlight.css", "~/Content/main.css"));
         }
     }
 }
