@@ -10,6 +10,13 @@ namespace RedTeam.Models
     public class Roku
     {
         public IPAddress Location { get; set; }
+        public List<Channel> favorite { get; set; }
 
+
+
+        public Roku()
+        {
+            this.favorite = new List<Channel>();
+        }
     }
 }

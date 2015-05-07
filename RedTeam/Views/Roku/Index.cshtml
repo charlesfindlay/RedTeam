@@ -19,7 +19,7 @@
         <div class="row"><button id="select">OK</button></div>
         <div class="row">
             <span><button id="rewind">Rewind</button></span><span><button id="play">Play</button></span>
-            <span><button id="forward">Forward</button></span>
+            <span><button id="forward" value="fwd">Forward</button></span>
         </div>
     </div>
 
@@ -28,12 +28,14 @@
 
 
     <div class="col-md-6">
-        @*<div>
-                @foreach (var item in myFavorites)
+        <div>
+                @foreach (var item in ViewBag.myfavorites)
                 {
-                    string uri = "http://10.251.1.162:8060/query/icon/" + item;
+                    string imageuri = "http://10.251.1.162:8060/query/icon/" + item.appID;
+                    <img src="@imageuri" id="quicklaunch" val="@item.appID" />
+                    <br />
                 }
-            </div>*@
+            </div>
 
     </div>
 </div>

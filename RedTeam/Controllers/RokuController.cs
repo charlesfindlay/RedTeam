@@ -14,21 +14,22 @@ namespace RedTeam.Controllers
 {
     public class RokuController : Controller
     {
+        public Roku myRoku = new Roku();
 
         // GET: Roku
         public ActionResult Index()
         {
 
             //RedTeam.Helper.FindRoku.HearRoku();
-            //var myFavorites = new List<Channel>  // Hard code favorite channels for testing of quick links
-            //{
-            //    new Channel(12),
-            //    new Channel(13),
-            //    new Channel(26950),
-            //    new Channel(23333),
-            //    new Channel(28076)
-            //};
+            
+            //Add default favorite channels
+            myRoku.favorite.Add(new Channel(12));
+            myRoku.favorite.Add(new Channel(13));
+            myRoku.favorite.Add(new Channel(26950));
+            myRoku.favorite.Add(new Channel(23333));
+            myRoku.favorite.Add(new Channel(28076));
 
+            ViewBag.myfavorites = myRoku.favorite;
 
             return View();
         }

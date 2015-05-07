@@ -5,13 +5,10 @@ using System.Text;
 
 namespace RedTeam.Models
 {
-    class Channel
+    public class Channel
     {
         public int appID { get; set; }
-        public string name { get; set; }
-
-
-
+        public int installPos { get; set; }
         
         public Channel(int p)
         {
