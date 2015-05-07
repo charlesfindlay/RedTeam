@@ -6,14 +6,14 @@
 <h2>Dashboard</h2>
 
 <div class="section_a" align="left" name="status">
-    <div class="col-sm-6 col-lg-6">
+    <div class="col-md-6 col-lg-10">
         <h4 class="h4">Head Light</h4>
         <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switchmessage bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
             <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-                <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
-                <span class="bootstrap-switch-label" style="width:53px;">&nbsp;</span>
-                <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
-                <input id="switchmessage" type="checkbox" checked />
+                @*<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
+                <span class="bootstrap-switch-label" style="width:53px;">&nbsp;</span>*@
+                @*<span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>*@
+                <input id="switchmessage" type="checkbox" unchecked />
             </div>
             <div class="btn-group">
                 <button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state" id="switchmessage" value="Send" />Update<br />
@@ -25,3 +25,24 @@
         </div>
     </div>
     </div>
+
+<div class="section_a" align="left" name="status">
+    <div class="col-md-6 col-lg-10">
+        <h4 class="h4">Head Light</h4>
+        <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-switchmessage bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
+            <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
+                @*<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
+                    <span class="bootstrap-switch-label" style="width:53px;">&nbsp;</span>*@
+                @*<span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>*@
+                <input id="switchmessage" type="checkbox" unchecked />
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state" id="switchmessage" value="Send" />Update<br />
+                @*<button class="btn btn-default" data-switch-get="state" type="button" id="switchmessage" value="State" />Send<br />*@
+            </div>
+            @*<input type="hidden" id="switchName" value="Left Front" />*@
+            <ul id="discussion"></ul>
+            Content
+        </div>
+    </div>
+</div>
