@@ -22,3 +22,26 @@ select,
 textarea {
     max-width: 280px;
 }
+.section_a {
+    width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+}
+.section_b {
+    width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+}.section_c {
+    width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+}
