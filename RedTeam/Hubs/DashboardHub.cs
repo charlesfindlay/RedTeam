@@ -11,6 +11,8 @@ namespace RedTeam.Hubs
         public void Hello()
         {
             Clients.All.hello();
+
+
         }
     }
 }
