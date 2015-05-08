@@ -8,11 +8,14 @@ namespace RedTeam.Hubs
 {
     public class CarSimulatorHub : Hub
     {
-        private Broadcaster _broadcaster; 
+        private Broadcaster _broadcaster;
+
+        public void doorLock(bool locked)
+        {
+            Clients.All.doorLock(locked);
+        }
+
     }
     
-    public void doorLock(bool locked)
-    {
-       Clients.All.doorLock(locked); 
-    }
+    
 }

@@ -21,7 +21,7 @@
 <h4>Dashboard Home</h4>
 
 <div>
-    <input type="checkbox" id="doorLock" /> Lock Door</br>
+    <input type="checkbox" id="doorLock" /> Lock Door
     <ul id="statusmessage"></ul>
 
 
@@ -29,20 +29,19 @@
 
 @section scripts {
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
 <script src="~/signalr/hubs"></script>
 
 
 <script>
     $(function () {
-        var dashboardHub = $.connection.DashboardHub;
+        var dashboardHub = $.connection.dashboardHub;
 
         $.connection.hub.start().done(function () {
             $('#doorLock').click(function () {
-                var boxstatus = $('#doorLock').val();
+                var boxstatus = $('#doorLock').is(':checked');
                 // Call the Send method on the hub.
-                dashboardHub.server.DoorLockCmd(boxstatus);
+                dashboardHub.server.doorLockCmd(boxstatus);
             });
 
         });

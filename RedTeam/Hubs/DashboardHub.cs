@@ -22,9 +22,9 @@ namespace RedTeam.Hubs
         }
 
 
-        public void DoorLockCmd(CarSimulator clientModel)
+        public void DoorLockCmd(bool myCarIsLocked)
         {
-            
+            _broadcaster.SendLockCmd(myCarIsLocked);
         }
     }
 }
