@@ -47,10 +47,11 @@
             // Call the Send method on the hub.
             doorlock.server.send(boxstatus);
             
-
-
-            // Clear text box and reset focus for next comment.
-           
+        });
+        $.connection.hub.start().done(function () {
+            $('#checkbox').click(function () {
+                // Call the Send method on the hub.
+                doorlock.server.send(boxstatus);
         });
 
         });
