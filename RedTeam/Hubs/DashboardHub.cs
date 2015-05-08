@@ -8,9 +8,9 @@ namespace RedTeam.Hubs
 {
     public class DashboardHub : Hub
     {
-        public void Hello()
+        public void send(bool boxstatusLock)
         {
-            Clients.All.hello();
+            Clients.All.doorlockCommand(boxstatusLock);
 
 
         }

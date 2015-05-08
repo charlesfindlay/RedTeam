@@ -1,7 +1,63 @@
 ﻿
 @{
     ViewBag.Title = "Dashboard";
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+    <script>
+        
+        (function ($) {
+            "use strict";
+            $(document).ready(function () {
+
+                $('#doorLock').click(function () {
+                    alert(this.checked ? "Doors Locked" : "Unlocked ");
+                });
+            });
+
+        })(jQuery);
+    </script>
 }
 
 <h2>Index</h2>
 
+<div>
+    <input type="checkbox" id="doorLock" /> Status</br>
+    <ul id="statusmessage"></ul>
+
+
+</div>
+
+@section scripts {
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+<script src="~/signalr/hubs"></script>
+
+
+<script>
+    $(function () {
+        var doorlock = $.connection.DashboardHub;
+        var boxstatus= $("#checkbox").attr($('#doorLock').val());
+        doorlock.client.doorlockCommand= $('#checkbox').click(function(boxstatus)
+            {
+            $('#statusmessage').append('<li><strong> Door Lock' + '</strong>: '+ boxstatus + '</li>');
+        });
+
+        $('#checkbox').click(function () {
+            // Call the Send method on the hub.
+            doorlock.server.send(boxstatus);
+            
+
+
+            // Clear text box and reset focus for next comment.
+           
+        });
+
+        });
+    function htmlEncode(value) {
+        var encodedValue = $('<div />').text(value).html();
+        return encodedValue;
+    }
+</script>
+
+}
