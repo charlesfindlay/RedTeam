@@ -36,29 +36,21 @@
 
 <script>
     $(function () {
-        var doorlock = $.connection.DashboardHub;
-        var boxstatus= $("#checkbox").attr($('#doorLock').val());
-        doorlock.client.doorlockCommand= $('#checkbox').click(function(boxstatus)
-            {
-            $('#statusmessage').append('<li><strong> Door Lock' + '</strong>: '+ boxstatus + '</li>');
-        });
+        var dashboardHub = $.connection.DashboardHub;
 
-        $('#checkbox').click(function () {
-            // Call the Send method on the hub.
-            doorlock.server.send(boxstatus);
-            
-        });
         $.connection.hub.start().done(function () {
-            $('#checkbox').click(function () {
+            $('#doorLock').click(function () {
+                var boxstatus = $('#doorLock').val();
                 // Call the Send method on the hub.
-                doorlock.server.send(boxstatus);
-        });
+                dashboardHub.server.doorLockCmd(boxstatus);
+            });
 
         });
+    });
     function htmlEncode(value) {
         var encodedValue = $('<div />').text(value).html();
         return encodedValue;
-    }
+    };
 </script>
 
 }
