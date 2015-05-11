@@ -12,7 +12,8 @@
                 $('#doorLock').click(function () {
                     alert(this.checked ? "Doors Locked" : "Unlocked ");
                 });
-                $('carLight').click(function () {
+
+                $('#carLight').click(function () {
                     alert(this.checked ? "Lights On" : "Lights Off");
                 });
             });
@@ -25,6 +26,8 @@
 
 <div>
     <input type="checkbox" id="doorLock" /> Lock Door
+    <ul id="statusmessage"></ul>
+    <input type="checkbox" id="carLight" /> Turn off Lights
     <ul id="statusmessage"></ul>
 
 
@@ -46,7 +49,10 @@
                 // Call the Send method on the hub.
                 dashboardHub.server.doorLockCmd(boxstatus);
             });
-
+            $('#carLight').click(function () {
+                var boxstatus = $('#carLight').is(':checked');
+                dashboardHub.server.carLightCmd(boxstatus);
+            });
         });
     });
     function htmlEncode(value) {
