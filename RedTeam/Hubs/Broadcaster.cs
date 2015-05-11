@@ -48,5 +48,18 @@ namespace RedTeam.Hubs
          {
              return _model;
          }
+         
+        internal void SendLightCmd(bool myCarLightsOff)
+         {
+             _model.doorLock = myCarLightsOff;
+             _simulatorhubContext.Clients.All.DoorLock(CarLightsOff);
+         }
+
+         internal CarSimulator GetCarModel()
+         {
+             return _model;
+         }
+
+         public object CarLightsOff { get; set; }
     }
 }
