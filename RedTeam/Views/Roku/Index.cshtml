@@ -28,14 +28,21 @@
 
 
     <div class="col-md-6">
-        <div>
-                @foreach (var item in ViewBag.myfavorites)
-                {
-                    string imageuri = "http://10.251.1.162:8060/query/icon/" + item.appID;
-                    <img src="@imageuri" id="quicklaunch" val="@item.appID" />
-                    <br />
-                }
-            </div>
-
+        <div class="row">
+            <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[0].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[0].appID" /></a></span>
+            <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[1].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[1].appID" /></a></span>
+        </div>
+        <div class="row">
+            <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[2].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[2].appID" /></a></span>
+            <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[3].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[3].appID" /></a></span>
+        </div>
     </div>
 </div>
+
+
+@*@foreach (var item in ViewBag.myfavorites)
+{
+    string imageuri = "http://@ViewBag.rokuLoc:8060/query/icon/" + item.appID;
+    <img src="@imageuri" id="quicklaunch" val="@item.appID" />
+    <br />
+}*@
