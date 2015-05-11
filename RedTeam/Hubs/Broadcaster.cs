@@ -54,13 +54,13 @@ namespace RedTeam.Hubs
              _model.headLight = myCarLightOff;
              _simulatorhubContext.Clients.All.CarLights(myCarLightOff);
          }
-        
+
+
+
         internal void SendEngineCmd(bool myCarEngineOff)
         {
-            _model.carEngine = myCarEngineOff;
+            _model.headLight = myCarEngineOff;
             _simulatorhubContext.Clients.All.CarLights(myCarEngineOff);
         }
-
-
     }
 }
