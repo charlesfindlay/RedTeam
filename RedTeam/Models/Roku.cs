@@ -11,12 +11,14 @@ namespace RedTeam.Models
     {
         public IPAddress Location { get; set; }
         public List<Channel> favorite { get; set; }
-
+        public List<Channel> installedApp { get; set; }
 
 
         public Roku()
         {
             this.favorite = new List<Channel>();
+            this.installedApp = new List<Channel>();
+
         }
     }
 }
