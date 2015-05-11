@@ -1,4 +1,8 @@
-﻿$("#home").click(function () {
+﻿$(" #roku-buttons").click(function (val, where) {
+    $.post('"http://" + where +":8060/keypress/" + val');
+});
+
+$("#home").click(function () {
     $.post("http://10.251.1.162:8060/keypress/home");
 });
 
@@ -42,3 +46,6 @@ $("#quicklaunch").click(function (val) {
     $.post("http://10.251.1.162:8060/launch/1?contentID=" + val);
 });
 
+function quickLaunch(id) {
+    $.post("http://10.251.1.162:8060/launch/" + id);
+}

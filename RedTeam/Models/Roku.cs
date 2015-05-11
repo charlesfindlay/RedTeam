@@ -9,7 +9,7 @@ namespace RedTeam.Models
 {
     public class Roku
     {
-        public IPAddress Location { get; set; }
+        public string Location { get; set; }
         public List<Channel> favorite { get; set; }
         public List<Channel> installedApp { get; set; }
 

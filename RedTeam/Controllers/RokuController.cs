@@ -20,25 +20,29 @@ namespace RedTeam.Controllers
         // GET: Roku
         public ActionResult Index()
         {
-            var whereRoku = "192.168.0.105"; //delete this line and uncomment the next line when listener is working
-            //var whereRoku = RedTeam.Helper.FindRoku.HearRoku();  
-            GetInstalledChannels(whereRoku, myRoku);
+            var whereRoku = "10.251.1.162"; //delete this line and uncomment the next line when listener is working
+            
+            ViewBag.rokuLoc = whereRoku;
+            //RedTeam.Helper.FindRoku.HearRoku();  
+            //GetInstalledChannels(whereRoku);
             
             //Add default favorite channels
             myRoku.favorite.Add(new Channel(12));
             myRoku.favorite.Add(new Channel(13));
             myRoku.favorite.Add(new Channel(26950));
             myRoku.favorite.Add(new Channel(23333));
-            myRoku.favorite.Add(new Channel(28076));
 
             ViewBag.myfavorites = myRoku.favorite;
 
             return View();
         }
 
-        private List<Channel> GetInstalledChannels(string whereRoku, Roku myRoku)
+        private void GetInstalledChannels(string whereRoku)
         {
             string installedQuery = "http://" + whereRoku + ":8060/query/apps";
+            // here send HTTP GET request to installedQuery URL
+            // Look at HttpWebRequest
+
 
             XPathDocument xmlRokuPathDoc = new XPathDocument(installedQuery);
 

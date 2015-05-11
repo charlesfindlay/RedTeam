@@ -41,7 +41,7 @@ namespace RedTeam.Helper
             CallRoku();
 
             IPAddress rokuIP = null;
-            int listenPort = 60000;
+            int listenPort = 1900;
 
             UdpClient listener = new UdpClient(listenPort);
             IPEndPoint listenerEP = new IPEndPoint(IPAddress.Any, listenPort);
