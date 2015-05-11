@@ -15,9 +15,9 @@ namespace RedTeam.Hubs
             Clients.All.doorLock(locked);
         }
 
-        public void carLights(bool off)
+        public void carLight(bool off)
         {
-            Clients.All.carLights(off);
+            Clients.All.carLight(off);
         }
     }
     

@@ -16,10 +16,12 @@ namespace RedTeam.Models
             this.doorLock = false;
             this.headLight = false;
         }
-            
 
 
-        
+
+
+
+        public object carLight { get; set; }
     }
 
 }

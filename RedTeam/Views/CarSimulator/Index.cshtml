@@ -7,7 +7,7 @@
 <h2>Car Simulator</h2>
 <div class="">
     <input type="checkbox" checked="@Model.doorLock" id="doorlock" />
-    <input type="checkbox" checked="@Model.headLight" id="headlight" />   
+    <input type="checkbox" checked="@Model.carLight" id="carlight" />   
 </div> 
 @section scripts {
     <!--Script references. -->
@@ -28,8 +28,8 @@
                 //$('#discussion').append('<li><strong>' + htmlEncode(name)
                 //+ '</strong>: ' + htmlEncode(message) + '</li>');
             };
-            carSimulator.client.headLight = function (off) {
-                $("#headlight").prop('checked', off);
+            carSimulator.client.carLights = function (off) {
+                $("#carlight").prop('checked', off);
             };
             // Get the user name and store it to prepend to messages.
             //$('#displayname').val(prompt('Enter your name:', ''));
