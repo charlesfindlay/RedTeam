@@ -7,7 +7,8 @@
 <h2>Car Simulator</h2>
 <div class="">
     <input type="checkbox" checked="@Model.doorLock" id="doorlock" />
-    <input type="checkbox" checked="@Model.carLight" id="carlight" />   
+    <input type="checkbox" checked="@Model.carLight" id="carlight" />
+    <input type="checkbox" checked="@Model.carEngine" id="carengine"/>  
 </div> 
 @section scripts {
     <!--Script references. -->
@@ -36,6 +37,10 @@
             // Set initial focus to message input box.
             //$('#message').focus();
             // Start the connection.
+            carSimulator.client.carEngine = function (off) {
+                $("#carengine").prop('checked', off);
+            };
+
             $.connection.hub.start();
         });
         // This optional function html-encodes messages for display in the page.
