@@ -11,23 +11,21 @@
 
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="row"><span><button id="back">Back</button></span><span><button id="home">Home</button></span></div>
-        <div class="row"><button id="up">Up</button></div>
-        <div class="row"><span><button id="left">Left</button></span><span><button id="right">Right</button></span></div>
-        <div class="row"><button id="down">Down</button></div>
-        <div class="row"><button id="select">OK</button></div>
-        <div class="row">
-            <span><button id="rewind">Rewind</button></span><span><button id="play">Play</button></span>
-            <span><button id="forward" value="fwd">Forward</button></span>
+    <div class="col-md-6" id="roku">
+        <div class="row" id="buttons1"><span><button id="back">Back</button></span><span><button id="home">Home</button></span></div>
+        <div class="row" id="buttons2"><button id="up">Up</button></div>
+        <div class="row" id="buttons3"><span><button id="left">Left</button></span><span><button id="right">Right</button></span></div>
+        <div class="row" id="buttons4"><button id="down">Down</button></div>
+        <div class="row" id="buttons5"><button id="select">OK</button></div>
+        <div class="row" id="buttons6">
+            <span><button id="rewind">Rewind</button></span>
+            <span><button id="play">Play</button></span>
+            <span><button id="forward" >Forward</button></span>
         </div>
     </div>
 
 
-
-
-
-    <div class="col-md-6">
+    <div class="col-md-6" id="quick-launch">
         <div class="row">
             <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[0].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[0].appID" /></a></span>
             <span><a href="javascript: quickLaunch(@ViewBag.myfavorites[1].appID);"><img src="http://@ViewBag.rokuLoc:8060/query/icon/@ViewBag.myfavorites[1].appID" /></a></span>
@@ -41,8 +39,8 @@
 
 
 @*@foreach (var item in ViewBag.myfavorites)
-{
-    string imageuri = "http://@ViewBag.rokuLoc:8060/query/icon/" + item.appID;
-    <img src="@imageuri" id="quicklaunch" val="@item.appID" />
-    <br />
-}*@
+    {
+        string imageuri = "http://@ViewBag.rokuLoc:8060/query/icon/" + item.appID;
+        <img src="@imageuri" id="quicklaunch" val="@item.appID" />
+        <br />
+    }*@

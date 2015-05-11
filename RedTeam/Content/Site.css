@@ -29,3 +29,51 @@ textarea {
     overflow: hidden;
 }
 
+#roku {
+    background-image: url("../images/tvwall.jpg");
+    background-position: left center;
+    width: 570px;
+    height: 400px;
+}
+
+#quick-launch {
+    padding-left: 10px;
+    float: right;
+    
+}
+
+#buttons1 {
+    position: absolute;
+    top: 110px;
+    left:260px;
+}
+
+#buttons2 {
+    position: absolute;
+    top: 138px;
+    left: 285px;
+}
+
+#buttons3 {
+    position: absolute;
+    top: 166px;
+    left: 260px;
+}
+
+#buttons4 {
+    position: absolute;
+    top: 194px;
+    left: 280px;
+}
+
+#buttons5 {
+    position: absolute;
+    top: 222px;
+    left: 285px;
+}
+
+#buttons6 {
+    position: absolute;
+    top: 260px;
+    left: 220px;
+}

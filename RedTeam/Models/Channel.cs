@@ -8,7 +8,6 @@ namespace RedTeam.Models
     public class Channel
     {
         public int appID { get; set; }
-        public int installPos { get; set; }
         
         public Channel(int p)
         {
