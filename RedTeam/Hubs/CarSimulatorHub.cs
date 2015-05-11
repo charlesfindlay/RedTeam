@@ -14,6 +14,16 @@ namespace RedTeam.Hubs
         {
             Clients.All.doorLock(locked);
         }
+        public void SendSpeed(string speed)
+        {
+
+            _broadcaster.SendCurrentSpeed(speed);
+        }
+        //public void SendSpeed(int speed)
+        //{
+        //    // Call the broadcastSpeed method to update clients.
+        //    Clients.All.broadcastSpeed(speed);
+        //}
 
     }
     

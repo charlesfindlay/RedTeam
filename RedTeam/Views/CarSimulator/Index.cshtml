@@ -11,6 +11,14 @@
     <input type="checkbox" checked="@Model.doorLock" id="doorlock" />
    
 </div> 
+<div class="container">
+    <h2 class="h5">Current Speed</h2>
+    <input type="text" id="currentSpeed" />
+    <input type="button" id="updateSpeed" value="Update" />
+    
+    <ul id="logmessage"></ul>
+</div>
+
 @section scripts {
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
@@ -26,21 +34,30 @@
             // Create a function that the hub can call back to display messages.
             carSimulator.client.doorLock = function (locked) {
                 $("#doorlock").prop('checked', locked);
-                // Add the message to the page.
-                //$('#discussion').append('<li><strong>' + htmlEncode(name)
-                    //+ '</strong>: ' + htmlEncode(message) + '</li>');
+                
+
             };
-            // Get the user name and store it to prepend to messages.
-            //$('#displayname').val(prompt('Enter your name:', ''));
-            // Set initial focus to message input box.
-            //$('#message').focus();
-            // Start the connection.
+ 
+
+            //$('#currentSpeed').val(prompt('The car is currently traveling:', ''));
+            $.connection.hub.start().done(function () {
+                $('#updateSpeed').click(function () {
+                    // Call the Send method on the hub. 
+                    carSimulator.server.sendSpeed($('#currentSpeed').val());
+                    // Clear text box and reset focus for next comment. 
+                    // Html encode display name and message. 
+                    var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
+
+                    // Add the message to the page. 
+                    $('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+
+                });
+            });
+
+
             $.connection.hub.start();
         });
-        // This optional function html-encodes messages for display in the page.
-        //function htmlEncode(value) {
-            //var encodedValue = $('<div />').text(value).html();
-            //return encodedValue;
+        
         
     </script>
 }

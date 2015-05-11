@@ -4,7 +4,7 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script>
-        
+
         (function ($) {
             "use strict";
             $(document).ready(function () {
@@ -16,46 +16,96 @@
 
         })(jQuery);
     </script>
+    @Styles.Render("~/Content/css")
+
 }
 
 <h4>Dashboard Home</h4>
 
 <div class="col-sm-6 col-lg-6">
-    <h4 class="h4">Head Light</h4>
+    <h2 class="h5">Car Doors</h2>
     <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
         <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-            <input type="checkbox" id="doorLock" checked/> Lock Door
+            <img src="~/Images/LockCar.png" sizes="sm"/>
+            <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
+            <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
+            <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
+            <input id="doorLock" type="checkbox" checked /> Lock Door
         </div>
-
     </div>
     <ul id="statusmessage"></ul>
 
-    
+
 </div>
+@*<div class="col-sm-6 col-lg-6">
+    <h2 class="h5">Head Lights</h2>
+    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-headLight bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
+        <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
+            <img src="~/Images/LockCar.png" sizes="sm" />
+            <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
+            <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
+            <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
+            <input id="doorLock" type="checkbox" checked /> Lock Door
+        </div>
+    </div>
+    <ul id="statusmessage"></ul>
+
+
+</div>*@
+
+<div class="container">
+    <h2 class="h5">Current Speed</h2>
+        <ul id="logmessage"></ul>
+</div>
+
+
 
 @section scripts {
 
-<script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-<script src="~/signalr/hubs"></script>
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
 
 
-<script>
-    $(function () {
-        var dashboardHub = $.connection.dashboardHub;
+    <script>
+        $(function () {
+            var dashboardHub = $.connection.dashboardHub;
 
-        $.connection.hub.start().done(function () {
-            $('#doorLock').click(function () {
-                var boxstatus = $('#doorLock').is(':checked');
-                // Call the Send method on the hub.
-                dashboardHub.server.doorLockCmd(boxstatus);
+            dashboardHub.client.sendSpeed = function (speed) {
+                // update the display of the speed:
+                // Html encode display name and message. 
+                var encodedspeed = $('#logmessage').text(speed).html();
+
+                // Add the message to the page. 
+                $('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + ' Mph' + '</li>');
+            }
+            $.connection.hub.start().done(function () {
+                $('#doorLock').click(function () {
+                    var boxstatus = $('#doorLock').is(':checked');
+                    // Call the Send method on the hub.
+                    dashboardHub.server.doorLockCmd(boxstatus);
+                });
+
+            });
+            
+            $.connection.hub.start().done( function () {
             });
 
+
+            //$('#currentSpeed').val(prompt('The car is currently traveling:', ''));
+            //$.connection.hub.start().done(function () {
+            //    $('#updateSpeed').click(function () {
+            //        // Call the Send method on the hub. 
+            //        $('#currentSpeed').val(prompt('The car is currently traveling:', ''));
+            //        carSimulator.server.sendSpeed($('#currentSpeed').val());
+                    
+                    
+            //    });
         });
-    });
-    function htmlEncode(value) {
-        var encodedValue = $('<div />').text(value).html();
-        return encodedValue;
-    };
-</script>
+        function htmlEncode(value) {
+            var encodedValue = $('<div />').text(value).html();
+            return encodedValue;
+        };
+    </script>
+    @Scripts.Render("~/bundles/bootstrap")
 
 }
