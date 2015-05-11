@@ -18,7 +18,13 @@
     
     <ul id="logmessage"></ul>
 </div>
+<div class="container">
+    <h2 class="h5">Current Gas Level</h2>
+    <input type="text" id="currentGasLevel" />
+    <input type="button" id="updateGas" value="Update" />
 
+    <ul id="gaslogmessage"></ul>
+</div>
 @section scripts {
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
@@ -53,6 +59,19 @@
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
                 });
+                $.connection.hub.start().done(function () {
+                    $('#updateGas').click(function () {
+                        // Call the Send method on the hub. 
+                        carSimulator.server.sendGas($('#currentGasLevel').val());
+                        // Clear text box and reset focus for next comment. 
+                        // Html encode display name and message. 
+                        var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
+
+                        // Add the message to the page. 
+                        $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
+                        //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+
+                    });
             });
 
 
@@ -60,7 +79,7 @@
         });
         
         
-    </script>
+   </script>
 }
 
 

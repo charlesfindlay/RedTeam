@@ -63,6 +63,16 @@
         <ul id="logmessage"></ul>
     </div>
 </div>
+<div class="container">
+    <h2 class="h5">Current Gas</h2>
+    @*<input type="button" id="updateSpeed" value="Update"  />*@
+    @*<input type="hidden" id="currentSpeed" value="@Model.speed"/>*@
+    <div id="currentGas"></div>
+
+    <div>
+        <ul id="gaslogmessage"></ul>
+    </div>
+</div>
 
 
 
@@ -84,6 +94,15 @@
 
                 // Add the message to the page.
                 $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
+            }
+            dashboardHub.client.sendGasLevel = function (gas) {
+                // update the display of the speed:
+                // Html encode display name and message.
+                $("#currentGas").text(gas);
+
+
+                // Add the message to the page.
+                $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' Mph' + '</li>');
             }
 
             //$.connection.hub.start().done(function () {

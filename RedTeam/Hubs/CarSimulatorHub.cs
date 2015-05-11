@@ -25,6 +25,11 @@ namespace RedTeam.Hubs
 
             _broadcaster.SendCurrentSpeed(speed);
         }
+        public void SendGasLevel(int gas)
+        {
+
+            _broadcaster.SendCurrentGasLevel(gas);
+        }
         //public void SendSpeed(int speed)
         //{
         //    // Call the broadcastSpeed method to update clients.
