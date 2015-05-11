@@ -15,6 +15,7 @@ namespace RedTeam.Models
         {
             this.doorLock = false;
             this.headLight = false;
+            this.carEngine = false;
         }
 
 
@@ -22,6 +23,8 @@ namespace RedTeam.Models
 
 
         public object carLight { get; set; }
+
+        public bool carEngine { get; set; }
     }
 
 }
