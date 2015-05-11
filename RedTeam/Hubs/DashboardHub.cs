@@ -31,5 +31,10 @@ namespace RedTeam.Hubs
         {
             _broadcaster.SendLightCmd(myCarLightsAreOff);
         }
+
+        public void SendEngineCmd(bool myCarEngineOff)
+        {
+            _broadcaster.SendEngineCmd(myCarEngineOff);
+        }
     }
 }  
