@@ -8,13 +8,13 @@ namespace RedTeam.Models
     public class CarSimulator
     {
         public bool doorLock { get; set; }
-        public bool headLight { get; set; }
+        public bool carLight { get; set; }
         public bool carEngine { get; set; }
 
         public CarSimulator()
         {
             this.doorLock = false;
-            this.headLight = false;
+            this.carLight = false;
             this.carEngine = false;
         }
 
@@ -22,8 +22,7 @@ namespace RedTeam.Models
 
 
 
-        public object carLight { get; set; }
-
+       
         
     }
 
