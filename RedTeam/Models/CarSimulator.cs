@@ -8,12 +8,12 @@ namespace RedTeam.Models
     public class CarSimulator
     {
         public bool doorLock { get; set; }
-        public string speed { get; set; }
+        public int speed { get; set; }
 
         public CarSimulator()
         {
             this.doorLock = false;
-            
+            this.speed = 100;
         }
     
     

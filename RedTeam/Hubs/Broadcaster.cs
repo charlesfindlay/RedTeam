@@ -43,10 +43,10 @@ namespace RedTeam.Hubs
              _model.doorLock = myCarIsLocked;
              _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
          }
-         internal void SendCurrentSpeed(string speed1)
+         internal void SendCurrentSpeed(int speed1)
          {
              _model.speed = speed1;
-             _dashboardhubContext.Clients.All.SendSpeed(speed1);
+             _dashboardhubContext.Clients.All.SendASpeed(speed1);
          }
          internal CarSimulator GetCarModel()
          {

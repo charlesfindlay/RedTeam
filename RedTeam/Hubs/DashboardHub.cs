@@ -26,7 +26,7 @@ namespace RedTeam.Hubs
         {
             _broadcaster.SendLockCmd(myCarIsLocked);
         }
-        public void SendSpeed(string speed)
+        public void SendASpeed(int speed)
         {
             // Call the sendSpeed method to update clients.
             Clients.All.SendSpeed(speed);
