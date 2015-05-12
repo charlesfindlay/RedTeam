@@ -7,6 +7,8 @@
         <script src="bootstrap-switch.js"></script>*@
     <script src="../Scripts/RGraph.common.core.js"></script>
     <script src="../Scripts/RGraph.fuel.js"></script>
+    <script src="../Scripts/RGraph.common.dynamic.js"></script>
+    <script src="../Scripts/RGraph.meter.js"></script>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script>
@@ -34,33 +36,26 @@
 
 }
 
-<h1>Dashboard Home</h1>
 
-<div class="carSwitchSection_a">
-
-    <div>
+<div class="col-md-4">
+    <div id="fuel-meter">
+        <canvas id="cvs" width="200" height="200"></canvas>
+    </div>
+    <div id="car-switches">
         <input type="checkbox" id="doorLock" /> Lock Door
         <ul id="statusmessage"></ul>
         <input type="checkbox" id="carLight" /> Turn off Lights
         <ul id="statusmessage"></ul>
         <input type="checkbox" id="carEngine" /> Turn off Engine
         <ul id="statusmessage"></ul>
-
-
-    </div>
-    <div>
-        <h2>Fuel</h2>
-        <canvas id="cvs" width="200" height="200"></canvas>
     </div>
 </div>
 
 
 
 
-<div class="carSwitchSection_b">
+<div class="col-md-4">
 
-
-    <h2 align="middle">Virtual Car Remote</h2>
     <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
 </div>
 
@@ -79,26 +74,23 @@
 
 
     </div>*@
-<div class="carSwitchSection_c">
-    <div class="container ">
-        <h2 class="h3">Current Speed</h2>
+<div class="col-md-4">
+    <div id="speed-meter">
+        <canvas id="odometer" width="350" height="220"></canvas>
+    </div>
 
+    <div>
+        <h2>Current Speed</h2>
         <div id="currentSpeed"></div>
-
-        <div>
-            <ul id="logmessage"></ul>
-        </div>
+        <div><ul id="logmessage"></ul></div>
     </div>
 
-    <div class="container ">
-        <h2 class="h3">Current Gas Level</h2>
-
+    <div>
+        <h2>Current Gas Level</h2>
         <div id="currentGasLevel"></div>
-
-        <div>
-            <ul id="gaslogmessage"></ul>
-        </div>
+        <div><ul id="gaslogmessage"></ul></div>
     </div>
+
 </div>
 
 
@@ -112,17 +104,87 @@
     <script>
         $(function () {
             var dashboardHub = $.connection.dashboardHub;
+
             var fuel = new RGraph.Fuel({
                 id: 'cvs',
                 min: 0,
                 max: 20,
-                value:5
+                value: 5
             }).draw();
+
+            //Start Speed Gauge
+            var meter = new RGraph.Meter({
+                id: 'odometer',
+                min: 0,
+                max: 100,
+                value: 75,
+                options: {
+                    adjustable: true,
+                    angles: {
+                        start: RGraph.PI - 0.55,
+                        end: RGraph.TWOPI + 0.5
+                    },
+
+
+                    linewidth: {
+                        segments: 15
+                    },
+                    text: {
+                        size: 22,
+                        color: 'black'
+                    },
+                    green: {
+                        color: '#0a0',
+                        start: 0,
+                        end: 50
+                    },
+                    yellow: {
+                        color: '#D0AC41',
+                        start: 50,
+                        end: 75
+                    },
+                    red: {
+                        color: '#9E1E1E',
+                        start: 75,
+                        end: 100
+                    },
+                    segment: {
+                        radius: {
+                            start: 175
+                        }
+                    },
+                    border: false,
+                    strokestyle: 'white',
+                    tickmarks: {
+                        small: {
+                            num: 0
+                        },
+                        big: {
+                            num: 0
+                        }
+                    },
+                    needle: {
+                        radius: 150,
+                        color: 'gray'
+                    },
+                    text: {
+                        valign: 'bottom'
+                    },
+                    centerpin: {
+                        fill: 'white',
+                        stroke: 'gray'
+                    },
+
+                }
+            }).draw()
 
 
             dashboardHub.client.sendASpeed = function (speed) {
                 // update the display of the speed:
                 $("#currentSpeed").text(speed);
+                meter.value = speed;
+                RGraph.clear(document.getElementById("odometer"));
+                meter.draw();
                 // Add the message to the page.
                 $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
             };
@@ -136,9 +198,9 @@
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
 
-               
+
             };
-           
+
             $.connection.hub.start().done(function () {
                 $('#doorLock').click(function () {
                     var boxstatus = $('#doorLock').is(':checked');

@@ -236,7 +236,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\RGraph.common.core.js" />
+    <Content Include="Scripts\RGraph.common.dynamic.js" />
     <Content Include="Scripts\RGraph.fuel.js" />
+    <Content Include="Scripts\RGraph.meter.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\RokuApp.js" />
     <Content Include="Images\vWireFrameCar.jpg" />
