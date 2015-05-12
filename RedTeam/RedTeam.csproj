@@ -242,6 +242,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\RokuApp.js" />
     <Content Include="Images\vWireFrameCar.jpg" />
+    <Content Include="Sounds\vehicle089.wav" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

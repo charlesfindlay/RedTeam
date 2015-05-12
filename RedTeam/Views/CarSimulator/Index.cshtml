@@ -21,7 +21,7 @@
     </div>
     <div>
         <h2 class="h5">Start Engine</h2>
-        <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" checked="@Model.carEngine" id="carengine" />
+        <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" checked="@Model.carEngine" id="carengine" /><audio id="EngineSound" src="~/Sounds/vehicle089.wav" preload="none" autoplay="@Model.carEngine"></audio>
     </div>
 </div>
 
@@ -69,6 +69,9 @@
 
             carSimulator.client.carEngine = function (off) {
                 $("#carengine").prop('checked', off);
+                if ($("#carengine").prop('checked', true)) {
+                    $("#EngineSound").prop('autoplay', true)
+                }
             };
 
             $.connection.hub.start().done(function () {
