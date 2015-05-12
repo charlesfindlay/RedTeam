@@ -29,3 +29,30 @@ textarea {
     overflow: hidden;
 }
 
+.carSwitchSection_a{
+     width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+
+}
+.carSwitchSection_b{
+     width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+
+}
+.carSwitchSection_c{
+     width: 33.33%;
+    padding: 20px;
+    background-color: #d7d7d7;
+    float: left;
+    margin: 0;
+
+
+}

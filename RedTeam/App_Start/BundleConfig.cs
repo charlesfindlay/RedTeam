@@ -23,7 +23,7 @@ namespace RedTeam
                       "~/Scripts/bootstrap.js","~/Scripts/respond.js", "~/Scripts/bootstrap-switch.js","~/Scripts/highlight.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css","~/Content/site.css","~/Content/highlight.css","~/Content/bootstrap2/bootstrap-switch.css","~/Content/bootstrap3/bootstrap-switch.css","~/Content/main.css"));
+                      "~/Content/bootstrap.css", "~/Content/bootstrap-switch.css", "~/Content/site.css", "~/Content/highlight.css", "~/Content/bootstrap2/bootstrap-switch.css", "~/Content/bootstrap3/bootstrap-switch.css", "~/Content/main.css"));
             
             bundles.Add(new ScriptBundle("~/bundles/RokuApp").Include(
                         "~/Scripts/RokuApp.js"));

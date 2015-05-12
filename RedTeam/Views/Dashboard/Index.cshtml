@@ -1,7 +1,10 @@
 ﻿@model RedTeam.Models.CarSimulator
 @{
     ViewBag.Title = "Dashboard";
-
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-switch.css" rel="stylesheet">
+    <script src="jquery.js"></script>
+    <script src="bootstrap-switch.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script>
 
@@ -20,24 +23,39 @@
 
 }
 
-<h4>Dashboard Home</h4>
+<h1>Dashboard Home</h1>
 
-<div class="col-sm-6 col-lg-6">
-    <h2 class="h5">Car Doors</h2>
-    <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
-        <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-            @*<img src="~/Images/LockCar.png" sizes="sm" />
-            <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
-            <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
+<div class="carSwitchSection_a">
+    <div>
+        <h2 class="h2">Car Doors</h2>
+        @*<input id="doorLock" type="checkbox" checked />*@
+        @*<div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-focus bootstrap-switch-id-doorLock bootstrap-switch-animate" style="width:210px;">*@
+        <div class="bootstrap-switch-container bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate" style=" width:125px;margin-left:-12px;">
+            @*<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
+            <span class="bootstrap-switch-label" style="width:53px;"><img src="~/Images/LockCar.png" height="35" width="35" /></span>
             <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>*@
-            <input id="doorLock" type="checkbox" checked /> Lock Door
+            <input id="doorLock" type="checkbox" checked /><img src="~/Images/LockCar.png" height="35" width="35" />
         </div>
+        @*<div class="btn-group">
+            <button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state" id="doorLock"></button>
+        </div>*@
+
     </div>
     <ul id="statusmessage"></ul>
+</div>
+
+<div class="carSwitchSection_b">
+
+
+    <h2 align="middle">Virtual Car Remote</h2>
+    <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
+
+
 
 
 </div>
-@*<div class="col-sm-6 col-lg-6">
+
+@*<div class="col-sm-6 col-lg-4">
         <h2 class="h5">Head Lights</h2>
         <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-headLight bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
             <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
@@ -52,24 +70,25 @@
 
 
     </div>*@
+<div class="carSwitchSection_c">
+    <div class="container ">
+        <h2 class="h2">Current Speed</h2>
 
-<div class="container">
-    <h2 class="h5">Current Speed</h2>
-   
-    <div id="currentSpeed" ></div>
-    
-    <div>
-        <ul id="logmessage"></ul>
+        <div id="currentSpeed"></div>
+
+        <div>
+            <ul id="logmessage"></ul>
+        </div>
     </div>
-</div>
 
-<div class="container">
-    <h2 class="h5">Current Gas Level</h2>
-    
-    <div id="currentGasLevel"></div>
+    <div class="container ">
+        <h2 class="h2">Current Gas Level</h2>
 
-    <div>
-        <ul id="gaslogmessage"></ul>
+        <div id="currentGasLevel"></div>
+
+        <div>
+            <ul id="gaslogmessage"></ul>
+        </div>
     </div>
 </div>
 
@@ -97,18 +116,19 @@
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
             };
-                $.connection.hub.start().done(function () {
-                    $('#doorLock').click(function () {
-                        var boxstatus = $('#doorLock').is(':checked');
-                        // Call the Send method on the hub.
-                        dashboardHub.server.doorLockCmd(boxstatus);
-                    });
+            $.connection.hub.start().done(function () {
+                $('#doorLock').click(function () {
+                    var boxstatus = $('#doorLock').is(':checked');
+                    // Call the Send method on the hub.
+                    dashboardHub.server.doorLockCmd(boxstatus);
                 });
+            });
         });
-            //function htmlEncode(value) {
-            //    var encodedValue = $('<div />').text(value).html();
-            //    return encodedValue;
-            //};
+        //function htmlEncode(value) {
+        //    var encodedValue = $('<div />').text(value).html();
+        //    return encodedValue;
+        //};
+        $('#doorLock').bootstrapSwitch();
     </script>
     @Scripts.Render("~/bundles/bootstrap")
 
