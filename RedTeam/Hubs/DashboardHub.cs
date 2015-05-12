@@ -16,6 +16,9 @@ namespace RedTeam.Hubs
         { 
         }
 
+
+
+
         public DashboardHub(Broadcaster broadcaster) 
         { 
             _broadcaster = broadcaster; 
