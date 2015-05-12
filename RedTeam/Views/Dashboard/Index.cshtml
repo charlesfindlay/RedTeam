@@ -39,14 +39,21 @@
 <div class="carSwitchSection_a">
 
     <div>
-        <input type="checkbox" id="doorLock" /> Lock Door
-        <ul id="statusmessage"></ul>
-        <input type="checkbox" id="carLight" /> Turn off Lights
-        <ul id="statusmessage"></ul>
-        <input type="checkbox" id="carEngine" /> Turn off Engine
-        <ul id="statusmessage"></ul>
-
-
+        <div>
+            <h2 class="h5">Door Lock</h2>
+            <img src="~/Images/key_car_lock_pic.png" height="57" width="57"><input type="checkbox" id="doorLock" /> Lock Door
+            <ul id="statusmessage"></ul>
+        </div>
+        <div>
+            <h2 class="h5">Head Lights</h2>
+            <img src="~/Images/headlightIcon.jpg" height="55" width="55"><input type="checkbox" id="carLight" /> Turn off Lights
+            <ul id="statusmessage"></ul>
+        </div>
+        <div>
+            <h2 class="h5">Start Engine</h2>
+            <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" id="carEngine" /> Turn off Engine
+            <ul id="statusmessage"></ul>
+        </div>
     </div>
     <div>
         <h2>Fuel</h2>
@@ -116,7 +123,7 @@
                 id: 'cvs',
                 min: 0,
                 max: 20,
-                value:5
+                value: 5
             }).draw();
 
 
@@ -136,9 +143,9 @@
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
 
-               
+
             };
-           
+
             $.connection.hub.start().done(function () {
                 $('#doorLock').click(function () {
                     var boxstatus = $('#doorLock').is(':checked');

@@ -3,25 +3,40 @@
 
 @{
     ViewBag.Title = "Car Simulator";
+
+    <script src="../Scripts/RGraph.common.core.js"></script>
+    <script src="../Scripts/RGraph.fuel.js"></script>
 }
 
 <h2>Car Simulator</h2>
 
 <div class="">
-    <input type="checkbox" checked="@Model.doorLock" id="doorlock" />
-    <input type="checkbox" checked="@Model.carLight" id="carlight" />
-    <input type="checkbox" checked="@Model.carEngine" id="carengine"/>  
-</div> 
+    <div>
+        <h2 class="h5">Door Lock</h2>
+        <img src="~/Images/key_car_lock_pic.png" height="57" width="57"><input type="checkbox" checked="@Model.doorLock" id="doorlock"  />
+    </div>
+    <div>
+        <h2 class="h5">Head Lights</h2>
+        <img src="~/Images/headlightIcon.jpg" height="55" width="55"><input type="checkbox" checked="@Model.carLight" id="carlight" />
+    </div>
+    <div>
+        <h2 class="h5">Start Engine</h2>
+        <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" checked="@Model.carEngine" id="carengine" />
+    </div>
+</div>
 
 <div class="container">
     <h2 class="h5">Current Speed</h2>
     <input type="text" id="currentSpeed" />
     <input type="button" id="updateSpeed" value="Update" />
-    
+
     <ul id="logmessage"></ul>
 </div>
 <div class="container">
     <h2 class="h5">Current Gas Level</h2>
+    <div>
+        <canvas id="cvs" width="200" height="200"></canvas>
+    </div>
     <input type="text" id="currentGasLevel" />
     <input type="button" id="updateGas" value="Update" />
 
@@ -35,7 +50,16 @@
     <!--SignalR script to update the chat page and send messages.-->
     <script>
         $(function () {
-            var carSimulator = $.connection.carSimulatorHub;  // Reference the auto-generated proxy for the hub.
+            var carSimulator = $.connection.carSimulatorHub;
+            var fuel = new RGraph.Fuel({
+                id: 'cvs',
+                min: 0,
+                max: 20,
+                value: 5
+            }).draw();
+
+
+            // Reference the auto-generated proxy for the hub.
             carSimulator.client.doorLock = function (locked) {  // Create a function that the hub can call back to display messages.
                 $("#doorlock").prop('checked', locked);
             };
@@ -49,9 +73,9 @@
 
             $.connection.hub.start().done(function () {
                 $('#updateSpeed').click(function () {
-                    carSimulator.server.sendSpeed($('#currentSpeed').val()); // Call the Send method on the hub. 
-                    // Clear text box and reset focus for next comment. 
-                    // Html encode display name and message. 
+                    carSimulator.server.sendSpeed($('#currentSpeed').val()); // Call the Send method on the hub.
+                    // Clear text box and reset focus for next comment.
+                    // Html encode display name and message.
                     var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
 
                     $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>'); // Add the message to the page.
@@ -61,13 +85,17 @@
             });
             $.connection.hub.start().done(function () {
                 $('#updateGas').click(function () {
-                    // Call the Send method on the hub. 
+                    // Call the Send method on the hub.
                     carSimulator.server.sendGas($('#currentGasLevel').val());
-                        
-                    // Html encode display name and message. 
+                    fuel.value = ($('#currentGasLevel').val());
+                    RGraph.clear(document.getElementById("cvs"));
+
+                    fuel.draw();
+
+                    // Html encode display name and message.
                     var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
 
-                    // Add the message to the page. 
+                    // Add the message to the page.
                     $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
@@ -78,9 +106,9 @@
 
             $.connection.hub.start();
         });
-        
-        
-   </script>
+
+
+    </script>
 }
 
 

@@ -172,6 +172,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\engineStartIcon.jpg" />
+    <Content Include="images\headlightIcon.jpg" />
     <Content Include="images\tvwall.jpg" />
     <Content Include="Images\key_car_lock_pic.png" />
     <Content Include="Images\LockCar.png" />
