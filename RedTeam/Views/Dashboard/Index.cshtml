@@ -55,18 +55,17 @@
 
 <div class="container">
     <h2 class="h5">Current Speed</h2>
-    @*<input type="button" id="updateSpeed" value="Update"  />*@
-    @*<input type="hidden" id="currentSpeed" value="@Model.speed"/>*@
+   
     <div id="currentSpeed" ></div>
     
     <div>
         <ul id="logmessage"></ul>
     </div>
 </div>
+
 <div class="container">
     <h2 class="h5">Current Gas</h2>
-    @*<input type="button" id="updateSpeed" value="Update"  />*@
-    @*<input type="hidden" id="currentSpeed" value="@Model.speed"/>*@
+    
     <div id="currentGas"></div>
 
     <div>
@@ -90,11 +89,11 @@
                 // update the display of the speed:
                 // Html encode display name and message.
                 $("#currentSpeed").text(speed);
-                
+
 
                 // Add the message to the page.
                 $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
-            }
+            };
             dashboardHub.client.sendGasLevel = function (gas) {
                 // update the display of the speed:
                 // Html encode display name and message.
@@ -102,21 +101,10 @@
 
 
                 // Add the message to the page.
-                $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' Mph' + '</li>');
-            }
+                $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
+            };
 
-            //$.connection.hub.start().done(function () {
-            //    $('#updateSpeed').click(function () {
-            //        // Call the Send method on the hub.
-            //        dashboardHub.server.sendASpeed($('#currentSpeed').val());
-            //        // Clear text box and reset focus for next comment.
-            //        // Html encode display name and message.
-            //        var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
-
-            //        // Add the message to the page.
-            //        $('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
-
-            //    });
+            
                 $.connection.hub.start().done(function () {
                     $('#doorLock').click(function () {
                         var boxstatus = $('#doorLock').is(':checked');
@@ -125,31 +113,7 @@
                     });
 
                 });
-                //$.connection.hub.start().done(function () {
-                //        $('#updateSpeed').click(function () {
-                //            // Call the Send method on the hub.
-                //            dashboardHub.server.sendSpeed($('#currentSpeed').val());
-                //            // Clear text box and reset focus for next comment. 
-                //            // Html encode display name and message. 
-                //            var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
-
-                //            // Add the message to the page. 
-                //            $('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
-
-                //$.connection.hub.start().done(function () {
-                    
-                //});
-
-
-                //$('#currentSpeed').val(prompt('The car is currently traveling:', ''));
-                //$.connection.hub.start().done(function () {
-                //    $('#updateSpeed').click(function () {
-                //        // Call the Send method on the hub.
-                //        $('#currentSpeed').val(prompt('The car is currently traveling:', ''));
-                //        carSimulator.server.sendSpeed($('#currentSpeed').val());
-
-
-                //    });
+               
             });
             function htmlEncode(value) {
                 var encodedValue = $('<div />').text(value).html();

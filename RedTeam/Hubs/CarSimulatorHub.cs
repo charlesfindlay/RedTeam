@@ -16,6 +16,9 @@ namespace RedTeam.Hubs
         }
         private Broadcaster _broadcaster;
 
+
+
+
         public void doorLock(bool locked)
         {
             Clients.All.doorLock(locked);
@@ -25,16 +28,12 @@ namespace RedTeam.Hubs
 
             _broadcaster.SendCurrentSpeed(speed);
         }
-        public void SendGasLevel(int gas)
+        public void SendGas(int gas)
         {
 
             _broadcaster.SendCurrentGasLevel(gas);
         }
-        //public void SendSpeed(int speed)
-        //{
-        //    // Call the broadcastSpeed method to update clients.
-        //    Clients.All.broadcastSpeed(speed);
-        //}
+        
 
     }
     

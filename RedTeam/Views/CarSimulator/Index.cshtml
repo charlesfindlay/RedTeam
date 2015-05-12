@@ -59,19 +59,21 @@
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
                 });
-                $.connection.hub.start().done(function () {
-                    $('#updateGas').click(function () {
-                        // Call the Send method on the hub. 
-                        carSimulator.server.sendGas($('#currentGasLevel').val());
-                        // Clear text box and reset focus for next comment. 
-                        // Html encode display name and message. 
-                        var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
+            });
+            $.connection.hub.start().done(function () {
+                $('#updateGas').click(function () {
+                    // Call the Send method on the hub. 
+                    carSimulator.server.sendGas($('#currentGasLevel').val());
+                        
+                    // Html encode display name and message. 
+                    var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
 
-                        // Add the message to the page. 
-                        $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
-                        //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+                    // Add the message to the page. 
+                    $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
+                    //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
-                    });
+                });
+            
             });
 
 
