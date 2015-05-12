@@ -51,18 +51,6 @@
     <div>
         <h2>Fuel</h2>
         <canvas id="cvs" width="200" height="200"></canvas>
-        <script>
-            $(document).ready(function () {
-                var fuel = new RGraph.Fuel({
-                    id: 'cvs',
-                    min: 0,
-                    max: 100,
-                    value: 56
-                }).draw();
-            })
-        </script>
-
-
     </div>
 </div>
 
@@ -124,6 +112,13 @@
     <script>
         $(function () {
             var dashboardHub = $.connection.dashboardHub;
+            var fuel = new RGraph.Fuel({
+                id: 'cvs',
+                min: 0,
+                max: 20,
+                value:5
+            }).draw();
+
 
             dashboardHub.client.sendASpeed = function (speed) {
                 // update the display of the speed:
@@ -134,9 +129,16 @@
             dashboardHub.client.sendAGasLevel = function (gas) {
                 // update the display of the gas:
                 $("#currentGasLevel").text(gas);
+                fuel.value = gas;
+                RGraph.clear(document.getElementById("cvs"));
+
+                fuel.draw();
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
+
+               
             };
+           
             $.connection.hub.start().done(function () {
                 $('#doorLock').click(function () {
                     var boxstatus = $('#doorLock').is(':checked');
