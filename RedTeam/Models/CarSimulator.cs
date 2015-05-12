@@ -9,7 +9,7 @@ namespace RedTeam.Models
     {
         public bool doorLock { get; set; }
         public bool headLight { get; set; }
-
+        public object carLight { get; set; }
 
         public CarSimulator()
         {
@@ -21,7 +21,7 @@ namespace RedTeam.Models
 
 
 
-        public object carLight { get; set; }
+        
     }
 
 }

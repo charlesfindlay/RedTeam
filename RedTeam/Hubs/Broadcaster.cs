@@ -52,7 +52,7 @@ namespace RedTeam.Hubs
         internal void SendLightCmd(bool myCarLightOff)
          {
              _model.headLight = myCarLightOff;
-             _simulatorhubContext.Clients.All.CarLights(myCarLightOff);
+             _simulatorhubContext.Clients.All.CarLight(myCarLightOff);
          }
 
 

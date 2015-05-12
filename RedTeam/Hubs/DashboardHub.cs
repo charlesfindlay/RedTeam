@@ -27,9 +27,9 @@ namespace RedTeam.Hubs
             _broadcaster.SendLockCmd(myCarIsLocked);
         }
 
-        public void CarLightCmd(bool myCarLightsAreOff)
+        public void CarLightCmd(bool myCarLightAreOff)
         {
-            _broadcaster.SendLightCmd(myCarLightsAreOff);
+            _broadcaster.SendLightCmd(myCarLightAreOff);
         }
     }
 }  
