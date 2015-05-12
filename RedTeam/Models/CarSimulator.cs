@@ -12,18 +12,19 @@ namespace RedTeam.Models
         public bool carEngine { get; set; }
         public int speed { get; set; }
         public int gasLevel { get; set; }
-
+        public bool trunkOpen { get; set; }
 
         public CarSimulator()
         {
             this.doorLock = false;
             this.carLight = false;
             this.carEngine = false;
+            this.trunkOpen = false;
             this.speed = 100;
             this.gasLevel = 16;
         }
 
 
-        public bool trunkOpen { get; set; }
+
     }
 }
