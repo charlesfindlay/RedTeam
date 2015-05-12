@@ -11,28 +11,22 @@ namespace RedTeam.Hubs
     {
         public Broadcaster _broadcaster;
 
-         public DashboardHub() 
-            : this(Broadcaster.Instance) 
-        { 
-        }
-
-
-
-
+         public DashboardHub()
+            : this(Broadcaster.Instance) { } 
+        
         public DashboardHub(Broadcaster broadcaster) 
         { 
             _broadcaster = broadcaster; 
         }
-
-
+        
         public void DoorLockCmd(bool myCarIsLocked)
         {
             _broadcaster.SendLockCmd(myCarIsLocked);
         }
 
-        public void CarLightCmd(bool myCarLightsAreOff)
+        public void CarLightCmd(bool myCarLightAreOff)
         {
-            _broadcaster.SendLightCmd(myCarLightsAreOff);
+            _broadcaster.SendLightCmd(myCarLightAreOff);
         }
 
         public void CarEngineCmd(bool myCarEngineOff)
