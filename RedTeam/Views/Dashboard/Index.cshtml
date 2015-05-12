@@ -23,6 +23,9 @@
                 $('#carEngine').click(function () {
                     alert(this.checked ? "Engine On" : "Engine Off");
                 });
+                $('#trunkOpen').click(function () {
+                    alert(this.checked ? "Trunk Open" : "Trunk Closed");
+                });
             });
 
         })(jQuery);
@@ -42,7 +45,8 @@
         <ul id="statusmessage"></ul>
         <input type="checkbox" id="carEngine" /> Turn off Engine
         <ul id="statusmessage"></ul>
-
+        <input type="checkbox" id="trunkOpen" /> Open Trunk
+        <ul id="statusmessage"></ul>
 
     </div>
 </div>
@@ -133,6 +137,10 @@
             $('#carEngine').click(function () {
                 var boxstatus = $('#carEngine').is(':checked');
                 dashboardHub.server.carEngineCmd(boxstatus);
+            });
+            $('#trunkOpen').click(function () {
+                var boxstatus = $('#trunkOpen').is(':checked');
+                dashboardHub.server.trunkOpenCmd(boxstatus);
             });
 
         });

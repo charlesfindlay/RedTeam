@@ -37,7 +37,7 @@ namespace RedTeam.Hubs
             _broadcaster.SendEngineCmd(myCarEngineOff);
         }
 
-        public void SendTrunkCmd(bool myCarTrunkOpen)
+        public void trunkOpenCmd(bool myCarTrunkOpen)
         {
             _broadcaster.SendTrunkCmd(myCarTrunkOpen);
         }
