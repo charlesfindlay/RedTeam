@@ -1,10 +1,10 @@
 ﻿@model RedTeam.Models.CarSimulator
 @{
     ViewBag.Title = "Dashboard";
-    <link href="bootstrap.css" rel="stylesheet">
+    @*<link href="bootstrap.css" rel="stylesheet">
     <link href="bootstrap-switch.css" rel="stylesheet">
     <script src="jquery.js"></script>
-    <script src="bootstrap-switch.js"></script>
+    <script src="bootstrap-switch.js"></script>*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script>
 
@@ -27,21 +27,11 @@
 
 <div class="carSwitchSection_a">
     <div>
-        <h2 class="h2">Car Doors</h2>
-        @*<input id="doorLock" type="checkbox" checked />*@
-        @*<div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-focus bootstrap-switch-id-doorLock bootstrap-switch-animate" style="width:210px;">*@
+        <h2 class="h3">Car Doors</h2>
         <div class="bootstrap-switch-container bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate" style=" width:125px;margin-left:-12px;">
-            @*<span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
-            <span class="bootstrap-switch-label" style="width:53px;"><img src="~/Images/LockCar.png" height="35" width="35" /></span>
-            <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>*@
-            <input id="doorLock" type="checkbox" checked /><img src="~/Images/LockCar.png" height="35" width="35" />
+            <input id="doorLock" type="checkbox" name="mylock" checked /><button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state"  id="doorLock"><img src="~/Images/LockCar.png" height="35" width="35" /></button>
         </div>
-        @*<div class="btn-group">
-            <button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state" id="doorLock"></button>
-        </div>*@
-
     </div>
-    <ul id="statusmessage"></ul>
 </div>
 
 <div class="carSwitchSection_b">
@@ -72,7 +62,7 @@
     </div>*@
 <div class="carSwitchSection_c">
     <div class="container ">
-        <h2 class="h2">Current Speed</h2>
+        <h2 class="h3">Current Speed</h2>
 
         <div id="currentSpeed"></div>
 
@@ -82,7 +72,7 @@
     </div>
 
     <div class="container ">
-        <h2 class="h2">Current Gas Level</h2>
+        <h2 class="h3">Current Gas Level</h2>
 
         <div id="currentGasLevel"></div>
 
@@ -128,7 +118,7 @@
         //    var encodedValue = $('<div />').text(value).html();
         //    return encodedValue;
         //};
-        $('#doorLock').bootstrapSwitch();
+        $("[name='mylock']").bootstrapSwitch();
     </script>
     @Scripts.Render("~/bundles/bootstrap")
 
