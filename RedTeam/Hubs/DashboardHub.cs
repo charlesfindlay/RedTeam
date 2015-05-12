@@ -37,6 +37,11 @@ namespace RedTeam.Hubs
             _broadcaster.SendEngineCmd(myCarEngineOff);
         }
 
+        public void SendTrunkCmd(bool myCarTrunkOpen)
+        {
+            _broadcaster.SendTrunkCmd(myCarTrunkOpen);
+        }
+
         public void SendASpeed(int speed)
         {
             // Call the sendSpeed method to update clients.

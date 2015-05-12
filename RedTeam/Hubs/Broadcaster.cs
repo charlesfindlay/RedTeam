@@ -70,7 +70,7 @@ namespace RedTeam.Hubs
              _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
          }
 
-        internal void SentTrunkCmd (bool myCarTrunkOpen)
+        internal void SendTrunkCmd (bool myCarTrunkOpen)
          {
              _model.trunkOpen = myCarTrunkOpen;
              _simulatorhubContext.Clients.All.TrunkOpen(myCarTrunkOpen);

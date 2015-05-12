@@ -23,18 +23,12 @@ namespace RedTeam.Hubs
         {
             Clients.All.doorLock(locked);
         }
-        public void SendSpeed(int speed)
-        {
 
-            _broadcaster.SendCurrentSpeed(speed);
-        }
-        public void SendGas(int gas)
+        public void trunkOpen(bool open)
         {
-
-            _broadcaster.SendCurrentGasLevel(gas);
+            Clients.All.trunkOpen(open);
         }
         
-
         public void carLight(bool off)
         {
             Clients.All.carLight(off);
@@ -43,6 +37,18 @@ namespace RedTeam.Hubs
         public void carEngine(bool off)
         {
             Clients.All.carEngine(off);
+        }
+
+        public void SendSpeed(int speed)
+        {
+
+            _broadcaster.SendCurrentSpeed(speed);
+        }
+
+        public void SendGas(int gas)
+        {
+
+            _broadcaster.SendCurrentGasLevel(gas);
         }
     }
     
