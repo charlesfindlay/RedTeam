@@ -43,7 +43,11 @@ namespace RedTeam.Hubs
              _model.doorLock = myCarIsLocked;
              _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
          }
-
+         internal void SendCurrentSpeed(int speed1)
+         {
+             _model.speed = speed1;
+             _dashboardhubContext.Clients.All.SendASpeed(speed1);
+         }
          internal CarSimulator GetCarModel()
          {
              return _model;
@@ -60,5 +64,13 @@ namespace RedTeam.Hubs
             _model.carEngine = myCarEngineOff;
             _simulatorhubContext.Clients.All.CarEngine(myCarEngineOff);
         }
+
+         internal void SendCurrentGasLevel(int gas)
+         {
+             _model.gasLevel = gas;
+             _dashboardhubContext.Clients.All.SendAGasLevel(gas);
+             
+         }
+
     }
 }

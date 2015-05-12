@@ -36,5 +36,21 @@ namespace RedTeam.Hubs
         {
             _broadcaster.SendEngineCmd(myCarEngineOff);
         }
+
+        public void SendASpeed(int speed)
+        {
+            // Call the sendSpeed method to update clients.
+            Clients.All.SendSpeed(speed);
+        }
+        public void SendAGasLevel(int gas)
+        {
+            // Call the sendGas method to update clients.
+            Clients.All.SendGas(gas);
+        }
+        //public void BroadcastSpeed(int speed)
+        //{
+        //    _broadcaster.SendCurrentSpeed(speed);
+        //}
+
     }
 }  

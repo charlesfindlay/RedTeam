@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RedTeam.Hubs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace RedTeam.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
+            var model = Broadcaster.Instance.GetCarModel();
             return View();
         }
     }

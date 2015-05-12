@@ -8,12 +8,32 @@ namespace RedTeam.Hubs
 {
     public class CarSimulatorHub : Hub
     {
+        public CarSimulatorHub() : this(Broadcaster.Instance) { }
+
+        public CarSimulatorHub(Broadcaster broadcaster)
+        {
+            _broadcaster = broadcaster;
+        }
         private Broadcaster _broadcaster;
+
+
+
 
         public void doorLock(bool locked)
         {
             Clients.All.doorLock(locked);
         }
+        public void SendSpeed(int speed)
+        {
+
+            _broadcaster.SendCurrentSpeed(speed);
+        }
+        public void SendGas(int gas)
+        {
+
+            _broadcaster.SendCurrentGasLevel(gas);
+        }
+        
 
         public void carLight(bool off)
         {
