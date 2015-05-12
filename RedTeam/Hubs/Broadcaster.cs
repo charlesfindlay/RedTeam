@@ -36,13 +36,6 @@ namespace RedTeam.Hubs
                 } 
             }
  
-         
-
-         internal void SendLockCmd(bool myCarIsLocked)
-         {
-             _model.doorLock = myCarIsLocked;
-             _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
-         }
          internal void SendCurrentSpeed(int speed1)
          {
              _model.speed = speed1;
@@ -68,9 +61,13 @@ namespace RedTeam.Hubs
          internal void SendCurrentGasLevel(int gas)
          {
              _model.gasLevel = gas;
-             _dashboardhubContext.Clients.All.SendAGasLevel(gas);
-             
+             _dashboardhubContext.Clients.All.SendAGasLevel(gas);    
          }
 
+         internal void SendLockCmd(bool myCarIsLocked)
+         {
+             _model.doorLock = myCarIsLocked;
+             _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
+         }
     }
 }
