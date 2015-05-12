@@ -23,5 +23,7 @@ namespace RedTeam.Models
             this.gasLevel = 16;
         }
 
+
+        public bool trunkOpen { get; set; }
     }
 }
