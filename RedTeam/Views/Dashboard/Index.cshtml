@@ -2,9 +2,9 @@
 @{
     ViewBag.Title = "Dashboard";
     @*<link href="bootstrap.css" rel="stylesheet">
-    <link href="bootstrap-switch.css" rel="stylesheet">
-    <script src="jquery.js"></script>
-    <script src="bootstrap-switch.js"></script>*@
+        <link href="bootstrap-switch.css" rel="stylesheet">
+        <script src="jquery.js"></script>
+        <script src="bootstrap-switch.js"></script>*@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
     <script>
 
@@ -34,30 +34,27 @@
 <h1>Dashboard Home</h1>
 
 <div class="carSwitchSection_a">
+   
     <div>
-        <h2 class="h3">Car Doors</h2>
-        <div class="bootstrap-switch-container bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate" style=" width:125px;margin-left:-12px;">
-            <input id="doorLock" type="checkbox" name="mylock" checked /><button type="button" class="btn btn-default" data-switch-toggle="state" data-switch-get="state"  id="doorLock"><img src="~/Images/LockCar.png" height="35" width="35" /></button>
-        </div>
+        <input type="checkbox" id="doorLock" /> Lock Door
+        <ul id="statusmessage"></ul>
+        <input type="checkbox" id="carLight" /> Turn off Lights
+        <ul id="statusmessage"></ul>
+        <input type="checkbox" id="carEngine" /> Turn off Engine
+        <ul id="statusmessage"></ul>
+
+
     </div>
 </div>
+
+
+
 
 <div class="carSwitchSection_b">
 
 
     <h2 align="middle">Virtual Car Remote</h2>
     <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
-
-
-<div>
-    <input type="checkbox" id="doorLock" /> Lock Door
-    <ul id="statusmessage"></ul>
-    <input type="checkbox" id="carLight" /> Turn off Lights
-    <ul id="statusmessage"></ul>
-    <input type="checkbox" id="carEngine" /> Turn off Engine
-    <ul id="statusmessage"></ul>
-
-
 </div>
 
 @*<div class="col-sm-6 col-lg-4">
