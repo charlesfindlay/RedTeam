@@ -31,7 +31,7 @@ namespace RedTeam.Hubs
             // Call the sendSpeed method to update clients.
             Clients.All.SendSpeed(speed);
         }
-        public void SendGasLevel(int gas)
+        public void SendAGasLevel(int gas)
         {
             // Call the sendGas method to update clients.
             Clients.All.SendGas(gas);

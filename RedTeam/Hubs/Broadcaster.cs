@@ -56,7 +56,7 @@ namespace RedTeam.Hubs
          internal void SendCurrentGasLevel(int gas)
          {
              _model.gasLevel = gas;
-             _dashboardhubContext.Clients.All.SendGasLevel(gas);
+             _dashboardhubContext.Clients.All.SendAGasLevel(gas);
              
          }
     }

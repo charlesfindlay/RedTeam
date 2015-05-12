@@ -7,8 +7,10 @@
 }
 
 <h2>Car Simulator</h2>
-<div class="">
-    <input type="checkbox" checked="@Model.doorLock" id="doorlock" />
+<div class="container">
+    <div>
+        <input type="checkbox" checked="@Model.doorLock" id="doorlock" /> Door Lock
+    </div>
    
 </div> 
 <div class="container">
@@ -40,12 +42,8 @@
             // Create a function that the hub can call back to display messages.
             carSimulator.client.doorLock = function (locked) {
                 $("#doorlock").prop('checked', locked);
-                
-
             };
- 
-
-            //$('#currentSpeed').val(prompt('The car is currently traveling:', ''));
+            
             $.connection.hub.start().done(function () {
                 $('#updateSpeed').click(function () {
                     // Call the Send method on the hub. 
@@ -73,7 +71,6 @@
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
                 });
-            
             });
 
 

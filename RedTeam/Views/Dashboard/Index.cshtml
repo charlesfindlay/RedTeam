@@ -26,10 +26,10 @@
     <h2 class="h5">Car Doors</h2>
     <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-doorLock bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
         <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-            <img src="~/Images/LockCar.png" sizes="sm" />
+            @*<img src="~/Images/LockCar.png" sizes="sm" />
             <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
             <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
-            <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
+            <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>*@
             <input id="doorLock" type="checkbox" checked /> Lock Door
         </div>
     </div>
@@ -64,9 +64,9 @@
 </div>
 
 <div class="container">
-    <h2 class="h5">Current Gas</h2>
+    <h2 class="h5">Current Gas Level</h2>
     
-    <div id="currentGas"></div>
+    <div id="currentGasLevel"></div>
 
     <div>
         <ul id="gaslogmessage"></ul>
@@ -87,38 +87,28 @@
 
             dashboardHub.client.sendASpeed = function (speed) {
                 // update the display of the speed:
-                // Html encode display name and message.
                 $("#currentSpeed").text(speed);
-
-
                 // Add the message to the page.
                 $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
             };
-            dashboardHub.client.sendGasLevel = function (gas) {
-                // update the display of the speed:
-                // Html encode display name and message.
-                $("#currentGas").text(gas);
-
-
+            dashboardHub.client.sendAGasLevel = function (gas) {
+                // update the display of the gas:
+                $("#currentGasLevel").text(gas);
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
             };
-
-            
                 $.connection.hub.start().done(function () {
                     $('#doorLock').click(function () {
                         var boxstatus = $('#doorLock').is(':checked');
                         // Call the Send method on the hub.
                         dashboardHub.server.doorLockCmd(boxstatus);
                     });
-
                 });
-               
-            });
-            function htmlEncode(value) {
-                var encodedValue = $('<div />').text(value).html();
-                return encodedValue;
-            };
+        });
+            //function htmlEncode(value) {
+            //    var encodedValue = $('<div />').text(value).html();
+            //    return encodedValue;
+            //};
     </script>
     @Scripts.Render("~/bundles/bootstrap")
 
