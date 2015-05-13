@@ -241,6 +241,7 @@
     <Content Include="Scripts\RGraph.common.dynamic.js" />
     <Content Include="Scripts\RGraph.fuel.js" />
     <Content Include="Scripts\RGraph.meter.js" />
+    <Content Include="Scripts\RGraph.thermometer.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Scripts\RokuApp.js" />
     <Content Include="Images\vWireFrameCar.jpg" />

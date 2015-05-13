@@ -12,6 +12,7 @@ namespace RedTeam.Models
         public bool carEngine { get; set; }
         public int speed { get; set; }
         public int gasLevel { get; set; }
+        public int engineTemp { get; set; }
 
 
         public CarSimulator()
@@ -19,8 +20,8 @@ namespace RedTeam.Models
             this.doorLock = false;
             this.carLight = false;
             this.carEngine = false;
-            this.speed = 100;
-            this.gasLevel = 16;
+            this.speed = 0;
+            this.gasLevel = 7;
         }
 
     }

@@ -5,6 +5,7 @@ using System.Web;
 using Microsoft.AspNet.SignalR;
 using System.Threading;
 using RedTeam.Models;
+using System.Threading.Tasks;
 
 namespace RedTeam.Hubs
 {
@@ -62,14 +63,46 @@ namespace RedTeam.Hubs
         internal void SendEngineCmd(bool myCarEngineOff)
         {
             _model.carEngine = myCarEngineOff;
+            var tempNow = _model.engineTemp;
             _simulatorhubContext.Clients.All.CarEngine(myCarEngineOff);
+            CalculateEngineTemp(myCarEngineOff, tempNow);
+            
         }
 
          internal void SendCurrentGasLevel(int gas)
          {
              _model.gasLevel = gas;
              _dashboardhubContext.Clients.All.SendAGasLevel(gas);
-             
+         }
+
+         internal void UpdateEngineTemp(int tempNow)
+         {
+             _model.engineTemp = tempNow;
+         }
+
+         public async Task CalculateEngineTemp(bool myCarEngineOff, int tempNow)
+         {
+             if (myCarEngineOff == false)
+             {
+                 while (tempNow < 225)
+                 {
+                     tempNow += 15;
+                     if (tempNow > 225) { tempNow = 225; }
+                     await Task.Delay(1000);
+                     _dashboardhubContext.Clients.All.DisplayEngineTemp(tempNow);
+                 }
+             }
+
+             if (myCarEngineOff == true)
+             {
+                 while (tempNow > 0)
+                 {
+                     tempNow -= 15;
+                     if (tempNow < 0) { tempNow = 0; }
+                     await Task.Delay(1000);
+                     _dashboardhubContext.Clients.All.DisplayEngineTemp(tempNow);
+                 }
+             }
          }
 
     }
