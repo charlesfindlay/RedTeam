@@ -11,7 +11,7 @@ namespace RedTeam.Hubs
     {
         public Broadcaster _broadcaster;
 
-         public DashboardHub()
+        public DashboardHub()
             : this(Broadcaster.Instance) { } 
         
         public DashboardHub(Broadcaster broadcaster) 
@@ -39,10 +39,17 @@ namespace RedTeam.Hubs
             // Call the sendSpeed method to update clients.
             Clients.All.SendSpeed(speed);
         }
+        
         public void SendAGasLevel(int gas)
         {
             // Call the sendGas method to update clients.
             Clients.All.SendGas(gas);
+        }
+
+        public void SendARangeReading(int range) 
+        {
+            // Call the sendRange method to update clients.
+            Clients.All.SendRange(range);
         }
         //public void BroadcastSpeed(int speed)
         //{

@@ -99,6 +99,16 @@
             <ul id="gaslogmessage"></ul>
         </div>
     </div>
+
+    <div class="container ">
+        <h2 class="h3">Current Range</h2>
+
+        <div id="currentRange"></div>
+        
+        <div>
+            <ul id="rangelogmessage"></ul>
+        </div> 
+    </div>
 </div>
 
 
@@ -119,13 +129,13 @@
                 value:5
             }).draw();
 
-
             dashboardHub.client.sendASpeed = function (speed) {
                 // update the display of the speed:
                 $("#currentSpeed").text(speed);
                 // Add the message to the page.
                 $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
             };
+
             dashboardHub.client.sendAGasLevel = function (gas) {
                 // update the display of the gas:
                 $("#currentGasLevel").text(gas);
@@ -135,10 +145,8 @@
                 fuel.draw();
                 // Add the message to the page.
                 $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
-
-               
             };
-           
+  
             $.connection.hub.start().done(function () {
                 $('#doorLock').click(function () {
                     var boxstatus = $('#doorLock').is(':checked');
@@ -147,13 +155,13 @@
                 });
             });
 
-            $('#carLight').click(function () {
-                var boxstatus = $('#carLight').is(':checked');
-                dashboardHub.server.carLightCmd(boxstatus);
+                $('#carLight').click(function () {
+                    var boxstatus = $('#carLight').is(':checked');
+                    dashboardHub.server.carLightCmd(boxstatus);
             });
-            $('#carEngine').click(function () {
-                var boxstatus = $('#carEngine').is(':checked');
-                dashboardHub.server.carEngineCmd(boxstatus);
+                $('#carEngine').click(function () {
+                    var boxstatus = $('#carEngine').is(':checked');
+                    dashboardHub.server.carEngineCmd(boxstatus);
             });
 
         });
