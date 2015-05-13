@@ -6,6 +6,14 @@
 
     <script src="../Scripts/RGraph.common.core.js"></script>
     <script src="../Scripts/RGraph.fuel.js"></script>
+    <script>
+        function ShowObject(id, flag) {
+            var elem = document.getElementById(id);
+            if (elem)
+                elem.style.visibility = flag ? 'visible' : 'hidden';
+        }
+
+    </script>
 }
 
 <h2>Car Simulator</h2>
@@ -13,7 +21,13 @@
 <div class="">
     <div>
         <h2 class="h5">Door Lock</h2>
-        <img src="~/Images/key_car_lock_pic.png" height="57" width="57"><input type="checkbox" checked="@Model.doorLock" id="doorlock"  />
+        <img src="~/Images/key_car_lock_pic.png" height="57" width="57"><input type="checkbox" checked="@Model.doorLock" id="doorlock" />
+        <div id="locked" style="position:absolute;left:690px;top:475px;width:65px;height:80px;z-index:7;">
+            <img src="~/Images/locked.jpg" id="locked" alt="" border="0" style="width:65px;height:80px;">
+        </div>
+        <div id="unlocked" style="position:absolute;left:687px;top:464px;width:83px;height:105px;z-index:8;">
+            <img src="~/Images/unlock.jpg" id="unlocked" alt="" border="0" style="width:83px;height:105px;">
+        </div>
     </div>
     <div>
         <h2 class="h5">Head Lights</h2>
@@ -21,10 +35,10 @@
     </div>
     <div>
         <h2 class="h5">Start Engine</h2>
-        <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" checked="@Model.carEngine" id="carengine" /><audio id="EngineSound" src="~/Sounds/vehicle089.wav" preload="none" autoplay="@Model.carEngine"></audio>
+        <img src="~/Images/engineStartIcon.jpg" height="88" width="88"><input type="checkbox" checked="@Model.carEngine" id="carengine" />
+        <audio id="engineSound" src="~/Sounds/vehicle089.wav" autoplay="autoplay" preload="none"></audio>
     </div>
 </div>
-
 <div class="container">
     <h2 class="h5">Current Speed</h2>
     <input type="text" id="currentSpeed" />
@@ -62,15 +76,26 @@
             // Reference the auto-generated proxy for the hub.
             carSimulator.client.doorLock = function (locked) {  // Create a function that the hub can call back to display messages.
                 $("#doorlock").prop('checked', locked);
+                if (locked == 1) {
+                    ShowObject('locked', 1);
+                    ShowObject('unlocked', 0);
+                } else {
+                    ShowObject('locked', 0);
+                    ShowObject('unlocked', 1);
+                }
+
             };
             carSimulator.client.carLights = function (off) {
                 $("#carlight").prop('checked', off);
             };
 
-            carSimulator.client.carEngine = function (off) {
-                $("#carengine").prop('checked', off);
-                if ($("#carengine").prop('checked', true)) {
-                    $("#EngineSound").prop('autoplay', true)
+            carSimulator.client.carEngine = function (starter) {
+                $("#carengine").prop('checked', starter);
+                //$("#EngineSound").prop('autoplay', off)
+                var sound = $('#engineSound');
+
+                if (off == 1) {
+                    sound.play() = true;
                 }
             };
 
@@ -83,7 +108,6 @@
 
                     $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>'); // Add the message to the page.
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
-
                 });
             });
             $.connection.hub.start().done(function () {

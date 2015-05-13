@@ -77,7 +77,15 @@ textarea {
     top: 260px;
     left: 220px;
 }
-
+.car{
+    background-image:url("../Images/wireCar.jpg");
+    background-repeat:no-repeat;
+    background-position:right center;
+    display:block;
+    height:200px;
+    width:200px;
+    
+}
 .carSwitchSection_a{
      width: 33.33%;
     padding: 20px;
