@@ -50,6 +50,16 @@
     <!--SignalR script to update the chat page and send messages.-->
     <script>
         $(function () {
+            var currentSpeed = 0
+            var amountOfGas = 14;
+            var  timer = setInterval(function () {                       
+                amountOfGas = amountOfGas - 1;
+                if (amountOfGas === 0) {
+                    clearInterval(timer);
+                }
+                carSimulator.server.sendGas(amountOfGas);
+            }, 1000);
+
             var carSimulator = $.connection.carSimulatorHub;
             var fuel = new RGraph.Fuel({
                 id: 'cvs',
@@ -75,43 +85,56 @@
             };
 
             $.connection.hub.start().done(function () {
-                $('#updateSpeed').click(function () {
-                    carSimulator.server.sendSpeed($('#currentSpeed').val()); // Call the Send method on the hub.
-                    // Clear text box and reset focus for next comment.
-                    // Html encode display name and message.
-                    var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
 
-                    $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>'); // Add the message to the page.
-                    //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+                setInterval(function () {
+                    currentSpeed = currentSpeed + 1;
+                    carSimulator.server.sendSpeed(currentSpeed);
+                }, 1000);
+                
 
+                //$('#updateSpeed').click(function () {
+                //    carSimulator.server.sendSpeed($('#currentSpeed').val()); // Call the Send method on the hub.
+                //    // Clear text box and reset focus for next comment.
+                //    // Html encode display name and message.
+                //    var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
+
+                //    $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>'); // Add the message to the page.
+                //    //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+
+                    //setInterval(function () {
+                    //    // Call the Send method on the hub.                       
+                    //    amountOfGas = amountOfGas - 1;
+                    //    carSimulator.server.sendGas(amountOfGas);
+                    //}, 1000);
+                   
+                    //timer = setInterval(function () {
+                    //    amountOfGas -= 1;
+                    //    if (amountOfGas === 0) {
+                    //        clearInterval(timer);
+                    //    }
+                    //    //do whatever here..
+                    //}, 1000);
+                    
+
+                    //$('#updateGas').click(function () {
+                    //    // Call the Send method on the hub.
+                    //    carSimulator.server.sendGas($('#currentGasLevel').val());
+                    //    fuel.value = ($('#currentGasLevel').val());
+                    //    RGraph.clear(document.getElementById("cvs"));
+
+                    //    fuel.draw();
+
+                    //    // Html encode display name and message.
+                    //    var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
+
+                    //    // Add the message to the page.
+                    //    $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
+                        //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
+                    });
                 });
-            });
-            $.connection.hub.start().done(function () {
-                $('#updateGas').click(function () {
-                    // Call the Send method on the hub.
-                    carSimulator.server.sendGas($('#currentGasLevel').val());
-                    fuel.value = ($('#currentGasLevel').val());
-                    RGraph.clear(document.getElementById("cvs"));
+            
 
-                    fuel.draw();
-
-                    // Html encode display name and message.
-                    var encodedgas = $('<div />').text($('#currentGasLevel').val()).html();
-
-                    // Add the message to the page.
-                    $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + encodedgas + ' gallons' + '</li>');
-                    //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
-
-                });
-            });
-
-
-
-            $.connection.hub.start();
-        });
-
-
-    </script>
+  </script>
 }
 
 
