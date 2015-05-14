@@ -61,14 +61,13 @@
             carSimulator.client.carEngine = function (off) {
                 $("#carengine").prop('checked', off);
                 if (off) {
-                    //$("#EngineSound").prop('autoplay', true)
                     gasTimer = setInterval(function () {
                         amountOfGas = amountOfGas - 1;
                         if (amountOfGas === 0) {
                             clearInterval(gasTimer);
                         }
                         carSimulator.server.sendGas(amountOfGas);
-                    }, 1000);
+                    }, 10000);
 
                     speedTimer = setInterval(function () {
                         currentSpeed = currentSpeed + 1;
