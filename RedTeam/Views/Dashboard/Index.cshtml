@@ -44,17 +44,17 @@
     <div id="car-switches">
         <h2 class="h5">Door Lock</h2>
         <img src="~/Images/key_car_lock_pic.png" height="57" width="57">
-        <input type="checkbox" id="doorLock" /> Lock Door
+        <input type="checkbox" id="doorLock" />
         <ul id="statusmessage"></ul>
 
         <h2 class="h5">Head Lights</h2>
         <img src="~/Images/headlightIcon.jpg" height="55" width="55">
-        <input type="checkbox" id="carLight" /> Turn off Lights
+        <input type="checkbox" id="carLight" />
         <ul id="statusmessage"></ul>
 
         <h2 class="h5">Start Engine</h2>
         <img src="~/Images/engineStartIcon.jpg" height="88" width="88">
-        <input type="checkbox" id="carEngine" /> Turn off Engine
+        <input type="checkbox" id="carEngine" /> 
         <ul id="statusmessage"></ul>
     </div>
 </div>
@@ -67,38 +67,11 @@
             <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
         </div>
 
-        @*<div class="col-sm-6 col-lg-4">
-                <h2 class="h5">Head Lights</h2>
-                <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-headLight bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
-                    <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-                        <img src="~/Images/LockCar.png" sizes="sm" />
-                        <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
-                        <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
-                        <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
-                        <input id="doorLock" type="checkbox" checked /> Lock Door
-                    </div>
-                </div>
-                <ul id="statusmessage"></ul>
-
-
-            </div>*@
+       
         <div class="col-md-4">
             <div id="speed-meter">
                 <canvas id="odometer" width="350" height="220"></canvas>
             </div>
-
-            <div>
-                <h2>Current Speed</h2>
-                <div id="currentSpeed"></div>
-                <div><ul id="logmessage"></ul></div>
-            </div>
-
-            <div>
-                <h2>Current Gas Level</h2>
-                <div id="currentGasLevel"></div>
-                <div><ul id="gaslogmessage"></ul></div>
-            </div>
-
         </div>
 
 

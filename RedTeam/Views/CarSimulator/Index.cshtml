@@ -75,12 +75,13 @@
                             clearInterval(speedTimer)
                         }
                         carSimulator.server.sendSpeed(currentSpeed);
-                    }, 1000);
+                    }, 500);
                 } 
                 else {
-                    $("#carengine").prop('checked', false);
+                    $("#carengine").prop('checked', off);
                     clearInterval(gasTimer);
                     clearInterval(speedTimer);
+                    currentSpeed = 0;
                     carSimulator.server.sendSpeed(0);
 
                 }
