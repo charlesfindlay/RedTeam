@@ -60,10 +60,10 @@
                 $("#carengine").prop('checked', off);
                 if ($("#carengine").prop('checked', true)) {
                     //$("#EngineSound").prop('autoplay', true)
-                    var timer = setInterval(function () {
+                    var gasTimer = setInterval(function () {
                         amountOfGas = amountOfGas - 1;
                         if (amountOfGas === 0) {
-                            clearInterval(timer);
+                            clearInterval(gasTimer);
                         }
                         carSimulator.server.sendGas(amountOfGas);
                     }, 1000);
@@ -75,8 +75,11 @@
 
             $.connection.hub.start().done(function () {
 
-                setInterval(function () {
+                var speedTimer = setInterval(function () {
                     currentSpeed = currentSpeed + 1;
+                    if (currentSpeed === 90) {
+                        clearInterval(speedTimer)
+                    }
                     carSimulator.server.sendSpeed(currentSpeed);
                 }, 1000);
                 
