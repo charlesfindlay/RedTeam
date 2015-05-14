@@ -12,7 +12,7 @@ namespace RedTeam.Models
         public bool carEngine { get; set; }
         public int speed { get; set; }
         public int gasLevel { get; set; }
-
+        public int rangeRemaining { get; set; }
 
         public CarSimulator()
         {
@@ -21,6 +21,7 @@ namespace RedTeam.Models
             this.carEngine = false;
             this.speed = 100;
             this.gasLevel = 16;
+            this.rangeRemaining = 432;
         }
 
     }

@@ -17,17 +17,17 @@ namespace RedTeam.Hubs
         private Broadcaster _broadcaster;
 
 
-
-
         public void doorLock(bool locked)
         {
             Clients.All.doorLock(locked);
         }
+        
         public void SendSpeed(int speed)
         {
 
             _broadcaster.SendCurrentSpeed(speed);
         }
+        
         public void SendGas(int gas)
         {
 

@@ -21,8 +21,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("RokuRemote", "RokuRemote", "Home")</li>
-                    <li>@Html.ActionLink("CarRemote", "CarRemote", "Home")</li>
+                    <li>@Html.ActionLink("Roku Remote", "Index", "Roku")</li>
+                    <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+                    <li>@Html.ActionLink("CarRemote", "Index", "CarSimulator")</li>
                 </ul>
             </div>
         </div>
@@ -31,6 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
+            @*Empty footer*@
         </footer>
     </div>
 
