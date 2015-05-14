@@ -192,6 +192,10 @@
 
                     };
 
+                    dashboardHub.client.sendCarRange = function (range) {
+                        $("#currentRange").text(range);
+                    };
+
                     $.connection.hub.start().done(function () {
                         $('#doorLock').click(function () {
                             var boxstatus = $('#doorLock').is(':checked');
