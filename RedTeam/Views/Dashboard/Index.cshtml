@@ -115,7 +115,7 @@
                     var thermometer = new RGraph.Thermometer({
                         id: 'thermo',
                         min: 0,
-                        max: 400,
+                        max: 300,
                         value: 0
                     }).draw()
 
@@ -209,7 +209,7 @@
 
                     dashboardHub.client.displayEngineTemp = function (temp) {
                         thermometer.value = temp;
-                        RGraph.clear(document.getElementByID("thermo"));
+                        RGraph.clear(document.getElementById("thermo"));
                         thermometer.draw();
                     };
 
