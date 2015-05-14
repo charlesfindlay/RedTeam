@@ -36,13 +36,13 @@
         $(function () {
             var currentSpeed = 0
             var amountOfGas = 14;
-            var  timer = setInterval(function () {                       
-                amountOfGas = amountOfGas - 1;
-                if (amountOfGas === 0) {
-                    clearInterval(timer);
-                }
-                carSimulator.server.sendGas(amountOfGas);
-            }, 1000);
+            //var  timer = setInterval(function () {                       
+            //    amountOfGas = amountOfGas - 1;
+            //    if (amountOfGas === 0) {
+            //        clearInterval(timer);
+            //    }
+            //    carSimulator.server.sendGas(amountOfGas);
+            //}, 1000);
 
             var carSimulator = $.connection.carSimulatorHub;
             
@@ -59,7 +59,14 @@
             carSimulator.client.carEngine = function (off) {
                 $("#carengine").prop('checked', off);
                 if ($("#carengine").prop('checked', true)) {
-                    $("#EngineSound").prop('autoplay', true)
+                    //$("#EngineSound").prop('autoplay', true)
+                    var timer = setInterval(function () {
+                        amountOfGas = amountOfGas - 1;
+                        if (amountOfGas === 0) {
+                            clearInterval(timer);
+                        }
+                        carSimulator.server.sendGas(amountOfGas);
+                    }, 1000);
                 }
             };
 
