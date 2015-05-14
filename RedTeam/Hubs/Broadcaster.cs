@@ -24,8 +24,6 @@ namespace RedTeam.Hubs
             _dashboardhubContext = GlobalHost.ConnectionManager.GetHubContext<DashboardHub>();
 
             _model = new CarSimulator();
-
-           
         }
 
             public static Broadcaster Instance 
@@ -35,29 +33,29 @@ namespace RedTeam.Hubs
                     return _instance.Value; 
                 } 
             }
- 
-         
 
-         internal void SendLockCmd(bool myCarIsLocked)
-         {
-             _model.doorLock = myCarIsLocked;
-             _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
-         }
-         internal void SendCurrentSpeed(int speed1)
-         {
-             _model.speed = speed1;
-             _dashboardhubContext.Clients.All.SendASpeed(speed1);
-         }
-         internal CarSimulator GetCarModel()
-         {
-             return _model;
-         }
+        internal void SendLockCmd(bool myCarIsLocked)
+        {
+            _model.doorLock = myCarIsLocked;
+            _simulatorhubContext.Clients.All.DoorLock(myCarIsLocked);
+        }
+
+        internal void SendCurrentSpeed(int speed1)
+        {
+            _model.speed = speed1;
+            _dashboardhubContext.Clients.All.SendASpeed(speed1);
+        }
+        
+        internal CarSimulator GetCarModel()
+        {
+            return _model;
+        }
          
         internal void SendLightCmd(bool myCarLightOff)
-         {
-             _model.carLight = myCarLightOff;
-             _simulatorhubContext.Clients.All.CarLights(myCarLightOff);
-         }
+        {
+            _model.carLight = myCarLightOff;
+            _simulatorhubContext.Clients.All.CarLight(myCarLightOff);
+        }
 
         internal void SendEngineCmd(bool myCarEngineOff)
         {
@@ -65,12 +63,16 @@ namespace RedTeam.Hubs
             _simulatorhubContext.Clients.All.CarEngine(myCarEngineOff);
         }
 
-         internal void SendCurrentGasLevel(int gas)
-         {
-             _model.gasLevel = gas;
-             _dashboardhubContext.Clients.All.SendAGasLevel(gas);
-             
-         }
+        internal void SendCurrentGasLevel(int gas)
+        {
+            _model.gasLevel = gas;
+            _dashboardhubContext.Clients.All.SendAGasLevel(gas);
+            _model.rangeRemaining = (_model.gasLevel * 27);
 
+            // send the range.
+            _dashboardhubContext.Clients.All.SendCarRange(_model.rangeRemaining);
+
+        }
+         
     }
 }

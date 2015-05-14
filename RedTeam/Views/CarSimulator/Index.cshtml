@@ -41,6 +41,7 @@
     <input type="button" id="updateGas" value="Update" />
 
     <ul id="gaslogmessage"></ul>
+
 </div>
 @section scripts {
     <!--Reference the SignalR library. -->
@@ -63,7 +64,7 @@
             carSimulator.client.doorLock = function (locked) {  // Create a function that the hub can call back to display messages.
                 $("#doorlock").prop('checked', locked);
             };
-            carSimulator.client.carLights = function (off) {
+            carSimulator.client.carLight = function (off) {
                 $("#carlight").prop('checked', off);
             };
 
@@ -81,12 +82,12 @@
                     // Html encode display name and message.
                     var encodedspeed = $('<div />').text($('#currentSpeed').val()).html();
 
-                    $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>'); // Add the message to the page.
+                $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + encodedspeed + ' Mph' + '</li>');
+                    // Add the message to the page.
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
                 });
-            });
-            $.connection.hub.start().done(function () {
+
                 $('#updateGas').click(function () {
                     // Call the Send method on the hub.
                     carSimulator.server.sendGas($('#currentGasLevel').val());
@@ -103,11 +104,10 @@
                     //$('#logmessage').append('<li><strong>' + 'Car current speed' + encodedspeed + '</li>');
 
                 });
+
             });
 
 
-
-            $.connection.hub.start();
         });
 
 

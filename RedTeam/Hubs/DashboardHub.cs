@@ -11,28 +11,22 @@ namespace RedTeam.Hubs
     {
         public Broadcaster _broadcaster;
 
-         public DashboardHub() 
-            : this(Broadcaster.Instance) 
-        { 
-        }
-
-
-
-
+        public DashboardHub()
+            : this(Broadcaster.Instance) { } 
+        
         public DashboardHub(Broadcaster broadcaster) 
         { 
             _broadcaster = broadcaster; 
         }
-
-
+        
         public void DoorLockCmd(bool myCarIsLocked)
         {
             _broadcaster.SendLockCmd(myCarIsLocked);
         }
 
-        public void CarLightCmd(bool myCarLightsAreOff)
+        public void CarLightCmd(bool myCarLightAreOff)
         {
-            _broadcaster.SendLightCmd(myCarLightsAreOff);
+            _broadcaster.SendLightCmd(myCarLightAreOff);
         }
 
         public void CarEngineCmd(bool myCarEngineOff)
@@ -45,15 +39,18 @@ namespace RedTeam.Hubs
             // Call the sendSpeed method to update clients.
             Clients.All.SendSpeed(speed);
         }
+        
         public void SendAGasLevel(int gas)
         {
             // Call the sendGas method to update clients.
             Clients.All.SendGas(gas);
         }
-        //public void BroadcastSpeed(int speed)
-        //{
-        //    _broadcaster.SendCurrentSpeed(speed);
-        //}
 
+        public void SendARangeReading(int range) 
+        {
+            // Call the sendRange method to update clients.
+            Clients.All.SendRange(range);
+        }
+        
     }
 }  

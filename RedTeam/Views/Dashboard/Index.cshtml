@@ -22,7 +22,7 @@
                 });
 
                 $('#carLight').click(function () {
-                    alert(this.checked ? "Lights On" : "Lights Off");
+                    alert(this.checked ? "Light On" : "Light Off");
                 });
 
                 $('#carEngine').click(function () {
@@ -62,44 +62,27 @@
 
 
 
-        <div class="col-md-4">
+<div class="col-md-4">
+    <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
+</div>
 
-            <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
+
+<div class="col-md-4">
+    <div id="speed-meter">
+        <canvas id="odometer" width="350" height="220"></canvas>
+    </div>
+
+    <div>
+        <h2 class="h3">Current Range</h2>
+
+        <div id="currentRange"></div>
+
+        <div>
+            <ul id="rangelogmessage"></ul>
         </div>
-
-        @*<div class="col-sm-6 col-lg-4">
-                <h2 class="h5">Head Lights</h2>
-                <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-id-headLight bootstrap-switch-animate bootstrap-switch-off " style="width:210px;">
-                    <div class="bootstrap-switch-container" style="width:200px;margin-left:0px;">
-                        <img src="~/Images/LockCar.png" sizes="sm" />
-                        <span class="bootstrap-switch-handle-on bootstrap-switch-primary" style="width:53px;">NO</span>
-                        <span class="bootstrap-switch-label" style="width:53px;">&nbsp;></span>
-                        <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width:53px;">OFF</span>
-                        <input id="doorLock" type="checkbox" checked /> Lock Door
-                    </div>
-                </div>
-                <ul id="statusmessage"></ul>
-
-
-            </div>*@
-        <div class="col-md-4">
-            <div id="speed-meter">
-                <canvas id="odometer" width="350" height="220"></canvas>
-            </div>
-
-            <div>
-                <h2>Current Speed</h2>
-                <div id="currentSpeed"></div>
-                <div><ul id="logmessage"></ul></div>
-            </div>
-
-            <div>
-                <h2>Current Gas Level</h2>
-                <div id="currentGasLevel"></div>
-                <div><ul id="gaslogmessage"></ul></div>
-            </div>
-
-        </div>
+    </div>
+    
+</div>
 
 
 
@@ -226,13 +209,11 @@
                         dashboardHub.server.carEngineCmd(boxstatus);
                     });
 
-                });
-                //function htmlEncode(value) {
-                //    var encodedValue = $('<div />').text(value).html();
-                //    return encodedValue;
-                //};
-                $("[name='mylock']").bootstrapSwitch();
-            </script>
-            @Scripts.Render("~/bundles/bootstrap")
+        });
 
-        }
+        $("[name='mylock']").bootstrapSwitch();
+    </script>
+    @Scripts.Render("~/bundles/bootstrap")
+
+}
+
