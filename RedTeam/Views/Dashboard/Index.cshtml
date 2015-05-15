@@ -37,187 +37,184 @@
 }
 
 
-<div class="col-md-4">
-    <div id="fuel-meter">
+<div class="row">
+    <div class="col-md-6" id="fuel-meter">
         <canvas id="cvs" width="200" height="200"></canvas>
     </div>
-    <div id="car-switches">
-        <h2 class="h5">Door Lock</h2>
-        <img src="~/Images/key_car_lock_pic.png" height="57" width="57">
-        <input type="checkbox" id="doorLock" />
-        <ul id="statusmessage"></ul>
-
-        <h2 class="h5">Head Lights</h2>
-        <img src="~/Images/headlightIcon.jpg" height="55" width="55">
-        <input type="checkbox" id="carLight" />
-        <ul id="statusmessage"></ul>
-
-        <h2 class="h5">Start Engine</h2>
-        <img src="~/Images/engineStartIcon.jpg" height="88" width="88">
-        <input type="checkbox" id="carEngine" /> 
-        <ul id="statusmessage"></ul>
-    </div>
-</div>
-
-
-
-
-@*<div class="col-md-4">
-    <img src="~/images/wireCar.png" alt="Virtual Car" align="middle" />
-</div>*@
-
-
-<div class="col-md-4">
-    <div id="speed-meter">
-        <canvas id="odometer" width="350" height="220"></canvas>
-    </div>
-
-    <div>
-        <h2 class="h3">Current Range</h2>
-
-        <div id="currentRange"></div>
+    <div class="col-md-6" id="speed-meter">
+        <div>
+            <canvas id="odometer" width="350" height="220"></canvas>
+        </div>
 
         <div>
-            <ul id="rangelogmessage"></ul>
+            <h2 class="h3">Current Range</h2>
+
+            <div id="currentRange"></div>
+
+            <div>
+                <ul id="rangelogmessage"></ul>
+            </div>
         </div>
     </div>
 </div>
 
+<div class="row">
+    <div class="col-md-4" id="car-switches">
+        <h2 class="h5">Door Lock</h2>
+        <img src="~/Images/key_car_lock_pic.png" height="57" width="57">
+        <input type="checkbox" id="doorLock" />
+        <ul id="statusmessage"></ul>
+    </div>
+
+    <div class="col-md-4" id="car-switches">
+        <h2 class="h5">Head Lights</h2>
+        <img src="~/Images/headlightIcon.jpg" height="55" width="55">
+        <input type="checkbox" id="carLight" />
+        <ul id="statusmessage"></ul>
+    </div>
+
+    <div class="col-md-4" id="car-switches">
+        <h2 class="h5">Start Engine</h2>
+        <img src="~/Images/engineStartIcon.jpg" height="88" width="88">
+        <input type="checkbox" id="carEngine" />
+        <ul id="statusmessage"></ul>
+    </div>
+</div>
 
 
-        @section scripts {
+    @section scripts {
 
-            <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
-            <script src="~/signalr/hubs"></script>
+        <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+        <script src="~/signalr/hubs"></script>
 
 
-            <script>
-                $(function () {
-                    var dashboardHub = $.connection.dashboardHub;
+        <script>
+            $(function () {
+                var dashboardHub = $.connection.dashboardHub;
 
-                    var fuel = new RGraph.Fuel({
-                        id: 'cvs',
-                        min: 0,
-                        max: 20,
-                        value: 20
-                    }).draw();
+                var fuel = new RGraph.Fuel({
+                    id: 'cvs',
+                    min: 0,
+                    max: 20,
+                    value: 20
+                }).draw();
 
-                    //Start Speed Gauge
-                    var meter = new RGraph.Meter({
-                        id: 'odometer',
-                        min: 0,
-                        max: 100,
-                        value: 0,
-                        options: {
-                            adjustable: true,
-                            angles: {
-                                start: RGraph.PI, //- 0.55,
-                                end: RGraph.TWOPI + 0.5
+                //Start Speed Gauge
+                var meter = new RGraph.Meter({
+                    id: 'odometer',
+                    min: 0,
+                    max: 100,
+                    value: 0,
+                    options: {
+                        adjustable: true,
+                        angles: {
+                            start: RGraph.PI, //- 0.55,
+                            end: RGraph.TWOPI + 0.5
+                        },
+
+
+                        linewidth: {
+                            segments: 15
+                        },
+                        text: {
+                            size: 22,
+                            color: 'black'
+                        },
+                        green: {
+                            color: '#0a0',
+                            start: 0,
+                            end: 50
+                        },
+                        yellow: {
+                            color: '#D0AC41',
+                            start: 50,
+                            end: 75
+                        },
+                        red: {
+                            color: '#9E1E1E',
+                            start: 75,
+                            end: 100
+                        },
+                        segment: {
+                            radius: {
+                                start: 175
+                            }
+                        },
+                        border: false,
+                        strokestyle: 'white',
+                        tickmarks: {
+                            small: {
+                                num: 0
                             },
+                            big: {
+                                num: 0
+                            }
+                        },
+                        needle: {
+                            radius: 150,
+                            color: 'gray',
+
+                        },
+                        text: {
+                            valign: 'bottom'
+                        },
+                        centerpin: {
+                            fill: 'white',
+                            stroke: 'gray'
+                        },
+
+                    }
+                }).draw()
 
 
-                            linewidth: {
-                                segments: 15
-                            },
-                            text: {
-                                size: 22,
-                                color: 'black'
-                            },
-                            green: {
-                                color: '#0a0',
-                                start: 0,
-                                end: 50
-                            },
-                            yellow: {
-                                color: '#D0AC41',
-                                start: 50,
-                                end: 75
-                            },
-                            red: {
-                                color: '#9E1E1E',
-                                start: 75,
-                                end: 100
-                            },
-                            segment: {
-                                radius: {
-                                    start: 175
-                                }
-                            },
-                            border: false,
-                            strokestyle: 'white',
-                            tickmarks: {
-                                small: {
-                                    num: 0
-                                },
-                                big: {
-                                    num: 0
-                                }
-                            },
-                            needle: {
-                                radius: 150,
-                                color: 'gray',
-                               
-                            },
-                            text: {
-                                valign: 'bottom'
-                            },
-                            centerpin: {
-                                fill: 'white',
-                                stroke: 'gray'
-                            },
+                dashboardHub.client.sendASpeed = function (speed) {
+                    // update the display of the speed:
+                    $("#currentSpeed").text(speed);
+                    meter.value = speed;
+                    RGraph.clear(document.getElementById("odometer"));
+                    meter.draw();
+                    // Add the message to the page.
+                    $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
+                };
+                dashboardHub.client.sendAGasLevel = function (gas) {
+                    // update the display of the gas:
+                    $("#currentGasLevel").text(gas);
+                    fuel.value = gas;
+                    RGraph.clear(document.getElementById("cvs"));
 
-                        }
-                    }).draw()
+                    fuel.draw();
+                    // Add the message to the page.
+                    $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
 
 
-                    dashboardHub.client.sendASpeed = function (speed) {
-                        // update the display of the speed:
-                        $("#currentSpeed").text(speed);
-                        meter.value = speed;
-                        RGraph.clear(document.getElementById("odometer"));
-                        meter.draw();
-                        // Add the message to the page.
-                        $('#logmessage').append('<li><strong>' + 'Car current speed is: ' + speed + ' Mph' + '</li>');
-                    };
-                    dashboardHub.client.sendAGasLevel = function (gas) {
-                        // update the display of the gas:
-                        $("#currentGasLevel").text(gas);
-                        fuel.value = gas;
-                        RGraph.clear(document.getElementById("cvs"));
+                };
 
-                        fuel.draw();
-                        // Add the message to the page.
-                        $('#gaslogmessage').append('<li><strong>' + 'Car current gas level is: ' + gas + ' gallons' + '</li>');
+                dashboardHub.client.sendCarRange = function (range) {
+                    $("#currentRange").text(range);
+                };
 
-
-                    };
-
-                    dashboardHub.client.sendCarRange = function (range) {
-                        $("#currentRange").text(range);
-                    };
-
-                    $.connection.hub.start().done(function () {
-                        $('#doorLock').click(function () {
-                            var boxstatus = $('#doorLock').is(':checked');
-                            // Call the Send method on the hub.
-                            dashboardHub.server.doorLockCmd(boxstatus);
-                        });
+                $.connection.hub.start().done(function () {
+                    $('#doorLock').click(function () {
+                        var boxstatus = $('#doorLock').is(':checked');
+                        // Call the Send method on the hub.
+                        dashboardHub.server.doorLockCmd(boxstatus);
                     });
+                });
 
-                    $('#carLight').click(function () {
-                        var boxstatus = $('#carLight').is(':checked');
-                        dashboardHub.server.carLightCmd(boxstatus);
-                    });
-                    $('#carEngine').click(function () {
-                        var boxstatus = $('#carEngine').is(':checked');
-                        dashboardHub.server.carEngineCmd(boxstatus);
-                    });
+                $('#carLight').click(function () {
+                    var boxstatus = $('#carLight').is(':checked');
+                    dashboardHub.server.carLightCmd(boxstatus);
+                });
+                $('#carEngine').click(function () {
+                    var boxstatus = $('#carEngine').is(':checked');
+                    dashboardHub.server.carEngineCmd(boxstatus);
+                });
 
-        });
+            });
 
-        $("[name='mylock']").bootstrapSwitch();
-    </script>
-    @Scripts.Render("~/bundles/bootstrap")
+            $("[name='mylock']").bootstrapSwitch();
+        </script>
+        @Scripts.Render("~/bundles/bootstrap")
 
-}
+    }
 
