@@ -112,3 +112,9 @@ textarea {
 #car-switches {
     margin-top: 50px;
 }
+
+#car-image {
+    margin-top: 100px;
+    height: 220px;
+    width: 527px;
+}

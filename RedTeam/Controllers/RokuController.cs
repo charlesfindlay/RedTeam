@@ -20,7 +20,7 @@ namespace RedTeam.Controllers
         // GET: Roku
         public ActionResult Index()
         {
-            var whereRoku = "10.251.1.162"; //delete this line and uncomment the next line when listener is working
+            var whereRoku = "10.251.1.229"; //delete this line and uncomment the next line when listener is working
             
             ViewBag.rokuLoc = whereRoku;
             //RedTeam.Helper.FindRoku.HearRoku();  

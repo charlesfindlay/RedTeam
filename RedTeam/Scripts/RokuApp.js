@@ -3,46 +3,46 @@
 });
 
 $("#home").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/home");
+    $.post("http://10.251.1.229:8060/keypress/home");
 });
 
 $("#back").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/back");
+    $.post("http://10.251.1.229:8060/keypress/back");
 });
 
 $("#up").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/up");
+    $.post("http://10.251.1.229:8060/keypress/up");
 });
 
 $("#left").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/left");
+    $.post("http://10.251.1.229:8060/keypress/left");
 });
 
 $("#right").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/right");
+    $.post("http://10.251.1.229:8060/keypress/right");
 });
 
 $("#down").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/down");
+    $.post("http://10.251.1.229:8060/keypress/down");
 });
 
 $("#select").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/select");
+    $.post("http://10.251.1.229:8060/keypress/select");
 });
 
 $("#rewind").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/rev");
+    $.post("http://10.251.1.229:8060/keypress/rev");
 });
 
 $("#play").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/play");
+    $.post("http://10.251.1.229:8060/keypress/play");
 });
 
 $("#forward").click(function () {
-    $.post("http://10.251.1.162:8060/keypress/fwd");
+    $.post("http://10.251.1.229:8060/keypress/fwd");
 });
 
 
 function quickLaunch(id) {
-    $.post("http://10.251.1.162:8060/launch/" + id);
+    $.post("http://10.251.1.229:8060/launch/" + id);
 }

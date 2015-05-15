@@ -10,7 +10,11 @@
 
 <h2>Car Simulator</h2>
 
-<div class="">
+<div class="col-md-6">
+    <img src="~/images/vWireFrameCar.jpg" alt="Virtual Car" align="middle" id="car-image" />
+</div>
+
+<div class="col-md-6">
     <div>
         <h2 class="h5">Door Lock</h2>
         <img src="~/Images/key_car_lock_pic.png" height="57" width="57"><input type="checkbox" checked="@Model.doorLock" id="doorlock"  />
@@ -27,7 +31,7 @@
     <ul id="logmessage"></ul>
 </div>
 
-<div class="container">
+@*<div class="container">
     <h2 class="h5">Current Gas Level</h2>
     <div>
         <canvas id="cvs" width="200" height="200"></canvas>
@@ -36,7 +40,7 @@
     <input type="button" id="updateGas" value="Update" />
 
     <ul id="gaslogmessage"></ul>
-</div>
+</div>*@
 
 @section scripts {
     <!--Reference the SignalR library. -->
