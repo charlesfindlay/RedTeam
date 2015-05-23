@@ -20,7 +20,7 @@ namespace RedTeam.Controllers
         {
             // Once the code for the listener is working then the IP address of the roku needs to be passed into the view.
             // but for now it is hardcoded.
-
+            RedTeam.Helper.FindRoku.HearRoku();
             //var myRoku = "192.168.0.101"; // 192.168.0.101 is Charles' home roku
             
             return View();

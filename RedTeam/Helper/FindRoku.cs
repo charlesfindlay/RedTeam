@@ -16,7 +16,7 @@ namespace RedTeam.Helper
             // configure sending socket
             Socket sending_socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             // set ssdp address and port
-            IPAddress receivingAddress = IPAddress.Parse("192.168.2.255");
+            IPAddress receivingAddress = IPAddress.Parse("239.255.255.250");
             IPEndPoint receivingEndpoint = new IPEndPoint(receivingAddress, 1900);
 
             // write the request message
